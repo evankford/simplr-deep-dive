@@ -1,0 +1,168 @@
+.signup-popup-wrap {
+  .signup-popup {
+    display: none;
+  }
+}
+
+.signup-popup {
+  position: relative;
+
+  &__closer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: black;
+    font-size: 18px;
+    padding: 0.6em;
+  }
+}
+
+.basicLightbox__placeholder {
+  .signup-popup-inner {
+
+    padding-top: calc(20px + 2vw);
+    padding: calc(12px + 2vw);
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    background: white;
+
+    @include media-query($large-up) {
+      padding: 30px;
+    }
+
+    h3 {
+      //NF Title
+      font-size: calc(30px + 2vw);
+      font-family: 'funkydori';
+      text-align: center;
+      margin: 1em 0 0;
+
+      padding-bottom: 0.3em;
+      line-height: 1;
+    }
+
+    input[type=button] {
+      @extend .button;
+
+      font-size: 17px;
+      border-radius: 0;
+      margin-right: -5px;
+      min-width: 170px;
+
+      @include media-query($tiny) {
+        width: 100%;
+        margin: -3px 0 0;
+      }
+    }
+
+    .checkbox-wrap {
+      padding: 8px;
+
+      @include media-query($tiny) {
+        padding: 8px 0 0 20px;
+      }
+    }
+
+    .submit-wrap {
+      flex: 0 0 auto;
+      width: auto;
+      min-width: 0;
+    }
+
+    .html-wrap {
+
+      font-size: calc(18px + 0.25vw);
+    }
+
+    .nf-form-fields-required {
+      @include visually-hidden();
+    }
+
+    .nf-form-content {
+      border: 0;
+      padding: 0;
+      max-width: 600px;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .email-wrap .nf-field-label {
+      max-width: 40px;
+    }
+
+
+    .nf-field-element input[type=email] {
+      background: transparent;
+      border-bottom: 1px solid white;
+  }
+
+    .nf-field {
+      text-align: left;
+      width: 90%;
+      margin: auto;
+
+      a {
+        font-weight: bold;
+        font-size: 16px;
+        margin: 12px auto 0;
+      }
+    }
+
+    input[type=button] {
+      background: #cd7772;
+    }
+
+    .nf-form-cont.one-fourth {
+      width: 100%;
+      .field-wrap {
+        text-align: center;
+        padding-bottom: 18px;
+      }
+    }
+
+    .nf-after-form-content {
+      padding: 12px 0 0;
+      margin-top: -12px;
+    }
+
+    .nf-field-element {
+      h4 {
+        margin-bottom: 1.6em;
+      }
+    }
+
+    .nf-field-container.checkbox-container {
+      margin: 15px auto;
+
+      .checkbox-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        .nf-field-label {
+          order: 2;
+          flex: 1 1 auto;
+          text-align: left;
+        }
+        .nf-field-element {
+          order: 1;
+          flex: 0 0 30px;
+          width: auto;
+        }
+      }
+
+
+
+      label {
+        padding: 0;
+        display: inline-block;
+        margin: auto;
+
+
+      }
+    }
+  }
+}

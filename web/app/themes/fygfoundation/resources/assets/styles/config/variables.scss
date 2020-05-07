@@ -1,0 +1,50 @@
+/**
+ * Variables
+ */
+
+$theme-colors: (
+  primary: #525ddc,
+
+);
+
+$white: #fafafa;
+$black: #050505;
+$yellow: #D88F3A;
+$aqua: #A0E2C3;
+$red: #D84F42;
+$green: #406973;
+$pink: #C47CD4;
+$salmon: #DD7D7C;
+$blue: #3F69EA;
+
+
+.psuedoish {
+  @extend %psuedoish;
+}
+
+.isbg, .bg {
+  @extend %psuedoish;
+  position: absolute;
+  display: none;
+  @apply h-full;
+  img {
+    @extend %psuedoish;
+    height: 100%;
+    object-fit: cover;
+    font-family: "object-fit: cover";
+  }
+}
+
+.rellax {
+  @apply -mt-8;
+  height: calc(100% + 2rem);
+  &>img {
+    object-fit: cover;
+    font-family: "object-fit: cover;";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+}

@@ -1,0 +1,23 @@
+.page-template-template-about {
+  .hero-bg {
+    @include media-query($medium-up) {
+      width: 70%;
+    }
+  }
+  .hero-content {
+    padding-left: 10%;
+    max-width: 700px;
+  }
+  .gallery-hover {
+    font-size: calc(24px + 1.65vw);
+  }
+  section.section-about {
+    margin-top: calc(-50px - 6vw);
+    padding-top: calc(50px + 6vw);
+  }
+  section.section-hero {
+    margin-bottom: calc(-50px - 6vw);
+    z-index: 30;
+    background: transparent
+  }
+}

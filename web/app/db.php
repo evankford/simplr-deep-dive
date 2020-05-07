@@ -1,0 +1,1 @@
+/Users/evan/Local Sites/fygfoundation/app/bedrock/web/app/plugins/query-monitor/wp-content/db.php

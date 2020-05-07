@@ -1,0 +1,78 @@
+.deco-bottom,
+.site-footer-wrap {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    pointer-events: none;;
+    @extend %psuedo;
+    height: 600px;
+    top: auto;
+    bottom: -100px;
+    opacity: 0.28;
+    background-image: url('../images/dots.png');
+    background-size: 500px auto;
+    background-position: 0 130%;
+    background-repeat: repeat-x;
+  }
+
+}
+.deco-top,
+.section-hero {
+  overflow: hidden;
+  &::before {
+    pointer-events: none;;
+    @extend %psuedo;
+    height: 600px;
+    top: -100px;
+    opacity: 0.28;
+    background-image: url('../images/dots.png');
+    background-size: 500px auto;
+    background-position: 0 0%;
+    background-repeat: repeat-x;
+  }
+}
+
+.bg-gradient-midnight {
+  background: linear-gradient(138.08deg, #18001E 27.94%, #0D204F 72.39%);
+}
+.bg-gradient-brick {
+  background: linear-gradient(180deg, #872926 0%, rgba(7, 7, 7, 0.55) 100%),
+}
+
+.clip-top {
+  clip-path: polygon(100% 0%, 86% 4%, 73% 0%, 52% 7%, 33% 0%, 19% 6%, 0% 0%, 0% 100%, 100% 100%);
+  @include media-query($small) {
+    clip-path: polygon(100% 0%, 86% 2%, 73% 0%, 52% 3%, 33% 0%, 19% 1.5%, 0% 0%, 0% 100%, 100% 100%);
+  }
+}
+.clip-bottom {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 79% 100%, 57% 93%, 36% 96%, 13% 89%, 0 95%);
+  @include media-query($small) {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 93%, 79% 100%, 57% 95.5%, 36% 97%, 13% 95%, 0 99%);
+  }
+}
+.clip-both {
+  clip-path: polygon(0% 5%, 20% 0%, 43% 6%, 64% 0%, 81% 5%, 100% 0%, 100% 100%, 73% 96%, 56% 94%, 51% 98%, 27% 95%, 18% 100%, 5% 95%, 0% 100%);
+    @include media-query($small) {
+    clip-path: polygon(0% 2.5%, 20% 0%, 43% 3.6%, 81% 1%, 100% 2%, 100% 100%, 73% 98%, 56% 98%,  27% 100%,  0% 96%);
+  }
+}
+
+.clip-weird {
+  clip-path: polygon(0% 0%, 100% 14%, 100% 84%, 79% 96%, 50% 83%, 31% 92%, 9% 92%, 0% 98%);
+
+  @include media-query($small) {
+    clip-path: polygon(0 0, 0% 100%, 22% 96%, 41% 100%, 57% 97%, 84% 100%, 99% 96%, 100% 8%);
+  }
+}
+
+.clip-skew-bottom {
+  clip-path: polygon(0% 0%, 0% 86%, 100% 100%, 100% 0%);
+}
+
+.clip-top-subtle {
+  clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 72% 7%, 56% 3%, 26% 12%, 0% 7%);
+  @include media-query($small) {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 72% 2%, 56% 1%, 26% 5%, 0% 4.5%);
+  }
+}

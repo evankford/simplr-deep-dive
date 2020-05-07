@@ -1,0 +1,47 @@
+/**
+ * External
+ */
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+html {
+  font-size: 17px;
+}
+@import "~basiclightbox/dist/basicLightbox.min.css";
+
+.min-h-70h {
+  min-height: 70vh;
+}
+
+.min-h-90h {
+  min-height: 90vh;
+}
+.min-h-90h {
+  min-height: 90vh;
+}
+.max-h-75h {
+  max-height: 75vh;
+}
+.max-w-90 {
+  max-width: 90%;
+}
+
+.h-60vw {
+  height: 60vw
+}
+
+.pl-50p {
+ padding-left: 50%
+}
+
+.header-label {
+  @apply  uppercase tracking-ultra antialiased opacity-75 text-xl font-bold;
+}
+
+.header-mega {
+  @apply uppercase tracking-tight antialiased text-4xl leading-none font-black;
+}

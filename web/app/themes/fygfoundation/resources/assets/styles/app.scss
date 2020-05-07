@@ -1,0 +1,30 @@
+/** Config */
+@import 'config/variables';
+@import 'config/external';
+
+/** Common */
+@import 'common/global';
+
+/** Components */
+@import 'components';
+@import 'components/footer-drawer';
+
+/** Partials */
+@import 'partials/header';
+@import 'partials/signup';
+@import 'partials/vidbox';
+@import 'partials/flex-content';
+
+@import 'sections/hero';
+
+@import 'pages/about';
+
+html {
+  background: $black;
+}
+
+#MainContent {
+  &>*:first-child {
+    padding-top: var(--header-height);
+  }
+}
