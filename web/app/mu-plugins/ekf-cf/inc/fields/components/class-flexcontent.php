@@ -27,7 +27,7 @@ class FlexContent {
 
   public static function paragraph() {
      $builder = new FieldsBuilder('FlexContentParagraph');
-       $builder ->addWysiwyg('text', ['label' => 'Text', 'required' => 1, 'tabs'=>'visual', 'media_upload' => false, 'toolbar' => 'basic']);
+       $builder ->addWysiwyg('text', ['label' => 'Text', 'required' => 1,  'media_upload' => false, 'toolbar' => 'basic']);
        return $builder;
   }
   public static function image() {
@@ -47,6 +47,14 @@ class FlexContent {
     $builder->addButtonGroup('type' , ['label'=> 'Size'])
         ->addChoices(['label' => 'Label'], ['standard' => 'Standard'], ['mega' => 'Mega'] )
         ->addText('header', ["label" =>"Header"]);
+    return $builder;
+  }
+  public static function counter() {
+    $builder = new FieldsBuilder('FlexContentCounter');
+    $builder->addButtonGroup('type' , ['label'=> 'Size'])
+        ->addText('introduction', ["label" =>"Introduction"])
+        ->addNumber('number', ["label" => "Number"])
+        ->addText('subtitle', ["label" => "Subtitle"]);
     return $builder;
   }
 }

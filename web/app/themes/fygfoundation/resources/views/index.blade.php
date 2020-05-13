@@ -12,12 +12,14 @@
   @endif
 
   @while(have_posts()) @php(the_post())
+  <div class="my-12 standard-content">
     @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+  </div>
   @endwhile
 
   {!! get_the_posts_navigation() !!}
 @endsection
 
-@section('sidebar')
+{{-- @section('sidebar')
   @include('partials.sidebar')
-@endsection
+@endsection --}}

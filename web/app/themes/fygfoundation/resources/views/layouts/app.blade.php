@@ -1,7 +1,7 @@
 @include('partials.header')
 
 
-  <main class="main bg-black text-white" id="MainContent">
+  <main class="text-white main bg-blacker" id="MainContent">
     @yield('content')
   </main>
 

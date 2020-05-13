@@ -43,6 +43,7 @@ class Home {
 			->addFlexibleContent('impact_1_content', ['label' => 'Column 1 Content'])
 				->addLayout('paragraph')->addFields(FlexContent::paragraph())
 				->addLayout('header')->addFields(FlexContent::header())
+				->addLayout('counter')->addFields(FlexContent::counter())
 				->addLayout('button', ['label' => "Button", 'layout'=>'table'])->addFields(FlexContent::button())
 				->addLayout('image', ['label'=>'Image'])->addFields(FlexContent::image())
 			->endFlexibleContent()

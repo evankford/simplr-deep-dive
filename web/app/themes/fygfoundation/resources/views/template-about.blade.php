@@ -9,6 +9,7 @@
   @while(have_posts()) @php(the_post())
 
   @include('sections.hero')
+  @include('sections.vision')
   @include('sections.principles')
 
   @unless(get_field('include_more') == false)

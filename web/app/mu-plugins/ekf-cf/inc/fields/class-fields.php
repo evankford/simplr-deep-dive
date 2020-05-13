@@ -55,10 +55,11 @@ class Fields {
 
 	public  function init() {
 
-		$this->createMainPage();
-		$this->aboutPages();
 		$this->create_site();
 		$this->create_default();
+		$this->createMainPage();
+		$this->create_impact();
+		$this->aboutPages();
 		$this->filters();
 		$this->imageFocus();
 
@@ -112,6 +113,13 @@ class Fields {
 
 	public function create_site() {
 		$options = Views\Site::create();
+
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_impact() {
+		$options = Views\Impact::create();
 
 		add_action('acf/init', function() use ($options) {
 			acf_add_local_field_group($options->build());

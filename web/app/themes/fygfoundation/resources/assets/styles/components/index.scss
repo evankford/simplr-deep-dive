@@ -26,3 +26,9 @@ svg {
     font-size: 22px;
   }
 }
+
+.small-arrows {
+  @media (max-width: 767px) {
+    transform: rotateY(-180deg) rotateZ(80deg);
+  }
+}

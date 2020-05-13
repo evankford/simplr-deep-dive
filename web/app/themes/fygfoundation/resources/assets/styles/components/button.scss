@@ -6,7 +6,6 @@
   position: relative;
   overflow: hidden;
   transition: transform 300ms $ease;
-  font-size: 1.15rem;
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -17,7 +16,7 @@
     background: $blue;
     transition: transform 300ms $ease;
     z-index: -1;
-    transform: translateY(100%);
+    transform: translateY(103%);
   }
 
   // &::before {
@@ -38,6 +37,13 @@
     &::before {
       font-size: 1.15rem;
     }
+  }
+}
+
+.button {
+  i {
+    font-size: 1em;
+    margin: 0.075em;
   }
 }
 

@@ -25,7 +25,7 @@ header.banner {
   padding-bottom: 0;
   &::before {
     @extend %psuedo;
-    background: $blue;
+    background: $black;
     transition: opacity 300ms $ease;
     opacity: 0;
   }

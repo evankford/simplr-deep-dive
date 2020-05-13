@@ -1,29 +1,23 @@
 
-<section class="section-team text-white clip-bottom bg-orange relative pb-24 lg:pb-32">
-  <div class="partners-bg max-h-75h top-0 w-full h-full absolute z-0 block">
-    @include('partials.image-element', ['image' => $team_bg, 'args' => ['is_bg' => true]])
-  </div>
-   <div class="mt-16 lg:mt-24 mx-auto relative z-20 max-w-5xl p-6 container flex flex-wrap items-center justify-start lg:justify-center ">
-    <div  class="flex-300 m-3 max-w-lg pr-24 sm:pr-12 text-white ">
-      @include('partials.flex-content', ['content' => $team_content_1])
-    </div>
-    <div class="flex-300 m-3 max-w-xl text-white">
-      @include('partials.flex-content', ['content' => $team_content_2])
-    </div>
-  </div>
-  <div class="partners-list container mb-24 px-3 mt-4 max-w-5xl mx-auto">
+<section class="relative z-50 pt-32 pb-24 -my-24 text-white lg:-my-32 xl:-mb-48 bg-gradient-midnight clip-both section-team lg:pb-32">
+  <div class="container max-w-5xl px-3 mx-auto mt-4 mb-24 ">
     @if ($team_header)
-       <h4 data-anim-in class="header-label text-center mb-8">[{{$team_header}}]</h2>
+       <h4 data-anim-in class="mb-8 text-center header-label">[{{$team_header}}]</h2>
     @endif
-      <div data-anim-in-children class="flex flex-wrap items-stretch justify-center">
+      <div data-anim-in-children class="flex flex-wrap items-center justify-center">
         @foreach($team as $member)
-          <div class="flex-some md:flex-300  m-2 md:m-3 p-3 text-black bg-white rounded shadow-lg flex flex-wrap items-start justify-center">
-              <div class="max-w-xs flex-some rounded overflow-hidden">
-                @include('partials.image-element', ['image'=> $member['Image'], 'args' => ['max_width' => 600]])
+          <div class="flex flex-wrap items-start justify-center p-3 px-6 m-4 my-8 text-black bg-white rounded shadow-fun flex-full">
+              <div class="relative max-w-md mb-8 -mt-12 -ml-12 overflow-hidden rounded shadow-lg flex-300 lg:mb-4">
+                <div class="relative image-square pb-full">
+                  @include('partials.image-element', ['image'=> $member['Header']['Image'], 'args' => ['max_width' => 600, 'is_bg' => true]])
+                </div>
               </div>
-              <div class="flex-most my-5 md:my-0 pl-0 md:pl-5">
-                <h4 class="header-label">[{{$member['Name']}}]</h4>
-                <p class="text-md">{{$member['Title']}}</h4>
+              <div class="my-5 p-7 flex-most md:my-0 md:pl-12">
+                <h4 class="my-4 text-3xl font-black md:text-4xl text-salmon">{{$member["Header"]['Name']}}</h4>
+                <h6 class="my-4 header-label">[{{$member["Header"]['Title']}}]</h6>
+                <div class="text-sm rte">
+                  {!!$member['About']!!}
+                </div>
               </div>
           </div>
         @endforeach

@@ -40,21 +40,39 @@
 }
 
 .clip-top {
+  margin-top: calc(-4em - 5.5vw);
   clip-path: polygon(100% 0%, 86% 4%, 73% 0%, 52% 7%, 33% 0%, 19% 6%, 0% 0%, 0% 100%, 100% 100%);
   @include media-query($small) {
     clip-path: polygon(100% 0%, 86% 2%, 73% 0%, 52% 3%, 33% 0%, 19% 1.5%, 0% 0%, 0% 100%, 100% 100%);
   }
 }
 .clip-bottom {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 79% 100%, 57% 93%, 36% 96%, 13% 89%, 0 95%);
+    margin-bottom: calc(-4em - 4.5vw);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 96%, 79% 100%, 57% 95%, 36% 98%, 13% 93%, 0 95%);
   @include media-query($small) {
     clip-path: polygon(0% 0%, 100% 0%, 100% 93%, 79% 100%, 57% 95.5%, 36% 97%, 13% 95%, 0 99%);
   }
+  &+.section {
+    padding-top:calc(5.5em + 4.5vw);
+  }
 }
 .clip-both {
-  clip-path: polygon(0% 5%, 20% 0%, 43% 6%, 64% 0%, 81% 5%, 100% 0%, 100% 100%, 73% 96%, 56% 94%, 51% 98%, 27% 95%, 18% 100%, 5% 95%, 0% 100%);
-    @include media-query($small) {
-    clip-path: polygon(0% 2.5%, 20% 0%, 43% 3.6%, 81% 1%, 100% 2%, 100% 100%, 73% 98%, 56% 98%,  27% 100%,  0% 96%);
+  margin-top: calc(-4em - 4.5vw);
+  margin-bottom: calc(-4em - 4.5vw);
+  clip-path: polygon(0% 5%, 20% 0%, 43% 6%, 64% 0%, 81% 5%, 100% 0%, 100% 100%, 73% 96%, 56% 97%, 51% 98%, 27% 96.5%, 18% 100%, 5% 98%, 0% 100%);
+  @include media-query($small) {
+    clip-path: polygon(0% 0.52%, 22% 0%, 48% 1.4%, 83% 0%, 100% 1.35%, 100% 99%, 83% 100%, 71% 98.9%, 61% 100%, 22% 98.6%, 0% 100%);
+  }
+   &+.section {
+    padding-top:calc(5.5em + 4.5vw);
+  }
+}
+.clip-both-notfirst {
+
+  @extend .clip-both;
+  &:first-child {
+    @extend .clip-bottom;
+
   }
 }
 

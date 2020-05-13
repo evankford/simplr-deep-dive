@@ -1,0 +1,10 @@
+html:not(.no-js) {
+  [data-anim-in] {
+    visibility: hidden;
+  }
+  [data-anim-in-children] {
+    & > * {
+      visibility: hidden;
+    }
+  }
+}

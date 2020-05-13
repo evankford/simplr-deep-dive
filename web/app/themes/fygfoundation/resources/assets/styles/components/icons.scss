@@ -38,7 +38,7 @@ a.link-icon {
     font-family: "fontello-fyg";
     font-style: normal;
     font-weight: normal;
-    font-size: 1.2rem;
+    // font-size: 1.2rem;
     speak: none;
     display: inline-block;
     text-decoration: inherit;
@@ -92,6 +92,7 @@ a.link-icon {
 .icon-spin:before { content: '\e831'; } /* '' */
 .icon-spinner:before { content: '\e838'; } /* '' */
 .icon-right-circled:before { content: '\e83a'; } /* '' */
+.icon-left-circled:before { content: '\e83a'; transform: rotateY(180deg) } /* '' */
 .icon-play-circle:before { content: '\e900'; } /* '' */
 .icon-pandora:before { content: '\e902'; } /* '' */
 .icon-deezer:before { content: '\e903'; } /* '' */

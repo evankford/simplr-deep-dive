@@ -13,19 +13,7 @@ html {
 }
 @import "~basiclightbox/dist/basicLightbox.min.css";
 
-.min-h-70h {
-  min-height: 70vh;
-}
 
-.min-h-90h {
-  min-height: 90vh;
-}
-.min-h-90h {
-  min-height: 90vh;
-}
-.max-h-75h {
-  max-height: 75vh;
-}
 .max-w-90 {
   max-width: 90%;
 }
@@ -43,5 +31,19 @@ html {
 }
 
 .header-mega {
-  @apply uppercase tracking-tight antialiased text-4xl leading-none font-black;
+  @apply uppercase tracking-tight antialiased text-5xl leading-neg font-black;
+
+  @screen xl {
+    @apply text-huge
+  }
+}
+
+.standard-content {
+  @apply  px-6 py-10 mx-auto my-12 text-black bg-white max-w-4xl shadow-fun ;
+}
+
+@screen md {
+  .standard-content {
+    @apply p-12 shadow-bigfun;
+  }
 }

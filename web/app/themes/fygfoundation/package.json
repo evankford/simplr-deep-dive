@@ -51,6 +51,7 @@
     "basiclightbox": "^5.0.3",
     "bootstrap": "^4.4.1",
     "countdown": "^2.6.0",
+    "countup.js": "^2.0.5",
     "gsap": "^3.2.6",
     "headroom.js": "^0.11.0",
     "jquery": "^3.5.0",

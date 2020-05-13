@@ -1,3 +1,5 @@
+
+import $ from 'jquery'
 import Headroom from 'headroom.js';
 
 export default class Header {
@@ -8,6 +10,12 @@ export default class Header {
     this.showMenuBg = this.showBg.bind(this);
     this.hideMenuBg = this.hideBg.bind(this);
     this.root = document.documentElement;
+    this.imageHeader = document.querySelector(".image-header-full");
+    this.imageHeader = $(" main .image-header-full:first-child");
+    this.gradientHeader = $(
+      'main [data-module="animate-gradient"]:first-child'
+    );
+    console.log(this.gradientHeader)
     this.init();
   }
   init () {
@@ -24,7 +32,18 @@ export default class Header {
     var ht = this.el.offsetHeight;
     this.root.style.setProperty("--header-height", ht + "px");
     document.body.style.paddingTop = ht + "px";
-    this.main.style.marginTop = -ht + 'px';
+    this.main.style.marginTop = -ht + "px";
+
+
+    if (this.imageHeader.length && !this.imageHeader.hasClass('js-fixed')) {
+      this.imageHeader.addClass('js-fixed');
+      this.imageHeader.css({"margin-top": -ht, 'padding-top' : ht});
+    }
+
+    if (this.gradientHeader.length && !this.gradientHeader.hasClass('js-fixed')) {
+      this.gradientHeader.addClass('js-fixed')
+      this.gradientHeader.css({"margin-top": -ht, 'padding-top' : ht});
+    }
   }
 
 

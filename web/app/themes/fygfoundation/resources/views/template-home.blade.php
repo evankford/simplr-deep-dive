@@ -10,6 +10,7 @@
 
   @include('sections.hero')
   @include('sections.impact-home')
+  @include('sections.posts', ['post_type' => 'partnership', 'limit' => 2, 'title' => 'Featured Partnerships', 'button_text'=>"More Partnerships", 'button_url' => get_post_type_archive_link('partnership')])
   @include('sections.about')
 
   @endwhile

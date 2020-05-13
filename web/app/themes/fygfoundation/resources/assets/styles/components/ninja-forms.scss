@@ -1,9 +1,9 @@
 /* purgecss start ignore */
 %line-input {
   background: transparent;
-      color: white;
+      color: $black;
       border: 0;
-      border-bottom: 2px solid white;
+      border-bottom: 2px solid $black;
       height: auto;
       padding: 5px 9px;
       margin-top: 8px;
@@ -13,8 +13,8 @@
 }
 %box-input {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: $black;
+  border: 2px solid $black;
   height: auto;
   padding: 5px 9px;
   margin-top: 8px;

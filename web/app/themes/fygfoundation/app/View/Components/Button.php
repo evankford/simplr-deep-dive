@@ -39,12 +39,12 @@ class Button extends Component
      * @param  string  $url
      * @return void
      */
-    public function __construct($href = '', $class = null, $target = '', $icon = '')
+    public function __construct($href = '', $classes = null, $target = '', $icon = '')
     {
         $this->target = $this->processTarget($target);
         $this->icon = $icon;
         $this->href = $href;
-        $this->class = $class;
+        $this->classes = $classes;
     }
 
     public function processTarget($target) {

@@ -16,14 +16,23 @@
           [{{$item['header']}}]
         </h4>
       @elseif ($item['type'] == 'mega')
-      <h2 data-style="{{$item['type']}}" class="header-mega lg:text-6xl break-words flex-content__header">
+      <h2 data-style="{{$item['type']}}" class="break-words header-mega lg:text-6xl flex-content__header">
           {{$item['header']}}
         </h2>
-      @else
 
       @endif
     @elseif($item['acf_fc_layout'] == 'button')
-      <x-button icon="right-circled" class="test" href="{{$item['button']['URL']['url']}}" target="{{$item['button']['URL']['target']}}">{{$item['button']['URL']['title']}}</x-button>
+      <x-button icon="right-circled" class="text-lg uppercase" href="{{$item['button']['URL']['url']}}" target="{{$item['button']['URL']['target']}}">{{$item['button']['URL']['title']}}</x-button>
+    @elseif($item['acf_fc_layout'] == 'counter')
+    <h2 class="break-words header-mega lg:text-6xl flex-content__header">
+      @if ($item['introduction'])
+      <span class="font-normal text-opacity-75">{{$item['introduction']}}</span>
+      @endif
+      <span class="number" data-module="count-me">{{$item['number']}}</span>
+      @if ($item['subtitle'])
+      <span class="font-normal text-opacity-75"">{{$item['subtitle']}}</span>
+      @endif
+    </h2>
     @endif
   @endforeach
 </div>

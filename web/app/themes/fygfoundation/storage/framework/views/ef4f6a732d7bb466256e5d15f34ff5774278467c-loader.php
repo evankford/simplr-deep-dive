@@ -1,0 +1,1 @@
+<?= \Roots\view('partials.comments', $data ?? get_defined_vars())->render(); ?>

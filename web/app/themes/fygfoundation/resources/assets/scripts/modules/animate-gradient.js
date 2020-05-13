@@ -31,7 +31,6 @@ export default class AnimateGradient {
 
   gradientAnim() {
     var colorPair = this.getColors();
-    console.log(colorPair);
     TweenMax.to(this.el, 10, {backgroundImage: 'linear-gradient(to bottom, ' + colorPair.top + ', ' + colorPair.bottom + ')', onComplete: this.gradient});
   }
 
