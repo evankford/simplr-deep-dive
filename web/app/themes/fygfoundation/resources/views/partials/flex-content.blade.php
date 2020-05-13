@@ -28,7 +28,7 @@
       @if ($item['introduction'])
       <span class="font-normal text-opacity-75">{{$item['introduction']}}</span>
       @endif
-      <span class="number" data-module="count-me">{{$item['number']}}</span>
+      <span class="block number" data-module="count-me">{{$item['number']}}</span>
       @if ($item['subtitle'])
       <span class="font-normal text-opacity-75"">{{$item['subtitle']}}</span>
       @endif
