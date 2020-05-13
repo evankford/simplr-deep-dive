@@ -1,1 +1,0 @@
-<?php /**PATH /Users/evan/Local Sites/fygfoundation/app/bedrock/web/app/themes/fygfoundation/resources/views/sections/impact.blade.php ENDPATH**/ ?>

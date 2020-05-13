@@ -7,7 +7,7 @@
       <?php if($about_title): ?>
        <h2 data-anim-in class="mb-4 text-5xl header-mega lg:text-6xl"><?php echo e($about_title); ?></h2>
       <?php endif; ?>
-      <?php if($about_subtitle): ?>
+    <?php if($about_subtitle): ?>
        <h4 data-anim-in class="header-label">[<?php echo e($about_subtitle); ?>]</h2>
       <?php endif; ?>
     </div>

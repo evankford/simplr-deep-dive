@@ -7,7 +7,7 @@
       @if ($about_title)
        <h2 data-anim-in class="mb-4 text-5xl header-mega lg:text-6xl">{{$about_title}}</h2>
       @endif
-      @if($about_subtitle)
+    @if($about_subtitle)
        <h4 data-anim-in class="header-label">[{{$about_subtitle}}]</h2>
       @endif
     </div>
