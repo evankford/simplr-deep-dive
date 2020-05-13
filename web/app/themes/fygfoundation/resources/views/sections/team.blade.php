@@ -13,7 +13,7 @@
                 </div>
               </div>
               <div class="my-5 p-7 flex-most md:my-0 md:pl-12">
-                <h4 class="my-4 text-3xl font-black md:text-4xl text-salmon">{{$member["Header"]['Name']}}</h4>
+                <h4 class="my-4 text-3xl font-bold md:text-4xl text-salmon">{{$member["Header"]['Name']}}</h4>
                 <h6 class="my-4 header-label">[{{$member["Header"]['Title']}}]</h6>
                 <div class="text-sm rte">
                   {!!$member['About']!!}

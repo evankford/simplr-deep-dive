@@ -3,10 +3,10 @@
     <?php echo $__env->make('partials.image-element' , ['image' => get_post_thumbnail_id(), 'args' => ['is_bg' => true, 'max_width' => 600]], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   </div>
   <div class="p-8 pb-4 flex-300">
-    <h3 class="mb-2 text-3xl font-black leading-none uppercase md:text-4xl"><?php echo e(get_the_title()); ?></h3>
+    <h3 class="mb-2 text-3xl font-bold leading-none uppercase md:text-4xl"><?php echo e(get_the_title()); ?></h3>
     <div class="rte"><?php echo get_the_excerpt(); ?></div>
      <?php if (isset($component)) { $__componentOriginal065ae5da12ba8e75c6b4e84d90798c2fb812b940 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Button::class, ['icon' => 'right-circled','classes' => 'mt-6 ','href' => '@permalink']); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Button::class, ['icon' => 'right-circled','classes' => 'mt-6 ','href' => ''.e(get_the_permalink()).'']); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withName('button'); ?>

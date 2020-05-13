@@ -27,11 +27,11 @@ html {
 }
 
 .header-label {
-  @apply  uppercase tracking-ultra antialiased opacity-75 text-xl font-bold;
+  @apply  uppercase tracking-ultra antialiased opacity-75 text-xl font-medium;
 }
 
 .header-mega {
-  @apply uppercase tracking-tight antialiased text-5xl leading-neg font-black;
+  @apply uppercase tracking-tight antialiased text-5xl leading-neg font-bold;
 
   @screen xl {
     @apply text-huge
