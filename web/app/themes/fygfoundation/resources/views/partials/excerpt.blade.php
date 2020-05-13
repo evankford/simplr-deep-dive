@@ -5,6 +5,6 @@
   <div class="p-8 pb-4 flex-300">
     <h3 class="mb-2 text-3xl font-black leading-none uppercase md:text-4xl">{{get_the_title()}}</h3>
     <div class="rte">{!! get_the_excerpt()!!}</div>
-    <x-button icon="right-circled" classes="mt-6 " href="@permalink">{{__("Read More")}}</x-button>
+    <x-button icon="right-circled" classes="mt-6 " href="{{get_the_permalink()}}">{{__("Read More")}}</x-button>
   </div>
 </div>
