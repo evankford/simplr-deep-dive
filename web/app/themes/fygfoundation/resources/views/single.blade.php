@@ -5,7 +5,7 @@
   @include('partials.page-header')
 
   @while(have_posts()) @php(the_post())
-   <div class="my-12 lg:max-w-5xl standard-content">
+   <div class="relative my-12 lg:max-w-5xl standard-content z-80">
       @includeFirst(['partials.content-single-' . get_post_type(), 'partials.content-single'])
     </div>
   @endwhile
