@@ -54,15 +54,34 @@ class Fields {
 	}
 
 	public  function init() {
-
+		$this->create_pitches();
+		$this->create_ball();
+		$this->create_clouds();
 		$this->create_site();
-		$this->create_default();
-		$this->createMainPage();
-		$this->create_impact();
-		$this->aboutPages();
-		$this->filters();
+		$this->create_trio();
+		$this->create_goodbye();
+		$this->create_graph();
+		$this->create_quality();
+		$this->create_specialist();
+		$this->create_chat();
+		$this->create_simple();
+		$this->create_standard();
+		$this->create_icons();
+		$this->create_footer();
+		$this->create_quote();
+		$this->create_timeline();
+		// $this->create_default();
+		// $this->createMainPage();
+		// $this->create_impact();
+		$this->enqueue_acf_scripts();
 		$this->imageFocus();
 
+	}
+
+	public function enqueue_acf_scripts() {
+		add_action('acf/input/admin_enqueue_scripts', function() {
+			wp_enqueue_script( 'acf-js',\EKF_CF\ekf_cf_URL  . 'inc/fields/js/fields.js', array(), '1.0.0', true );
+		});
 	}
 
 	public function add_instructions() {
@@ -97,18 +116,7 @@ class Fields {
 			});
 	}
 	public function aboutPages() {
-		$about_main = Views\About::create();
-			add_action('acf/init', function() use ($about_main) {
-				acf_add_local_field_group($about_main->build());
-			});
-		$partners = Views\Partners::create();
-			add_action('acf/init', function() use ($partners) {
-				acf_add_local_field_group($partners->build());
-			});
-		$team = Views\Team::create();
-			add_action('acf/init', function() use ($team) {
-				acf_add_local_field_group($team->build());
-			});
+
 	}
 
 	public function create_site() {
@@ -118,40 +126,95 @@ class Fields {
 			acf_add_local_field_group($options->build());
 		});
 	}
-	public function create_impact() {
-		$options = Views\Impact::create();
-
+	public function create_pitches() {
+		$options = Views\Pitch::create();
 		add_action('acf/init', function() use ($options) {
 			acf_add_local_field_group($options->build());
 		});
 	}
-
-	public function create_default() {
-		$default = Views\BasicFields::create();
-		add_action('acf/init', function() use ($default) {
-			acf_add_local_field_group($default->build());
+	public function create_clouds() {
+			$options = Views\Clouds::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
 		});
 	}
-
-	public function filters() {
-		add_filter('acf/load_field/name=signup_form', function($field) {
-			$nums = [1,2,3,4,5,6,7,8,9];
-			$ids =[];
-			$titles =[];
-			if (class_exists('Ninja_Forms')) {
-				$forms = Ninja_Forms()->form()->get_forms();
-				if (isset($forms) && sizeof($forms) > 0) {
-					foreach ($forms as $form) {
-						$id = $form->get_id();
-						$title = $form->get_setting('title');
-						$field['choices'][$id] = $title;
-						// array_push($ids, $id);
-						// array_push($titles, $title);
-					}
-				}
-			}
-			return $field;
-	});
+	public function create_trio() {
+			$options = Views\Trio::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_goodbye() {
+			$options = Views\Goodbye::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_graph() {
+			$options = Views\Graph::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_ball() {
+		$options = Views\Ball::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_quality() {
+		$options = Views\Quality::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_specialist() {
+		$options = Views\Specialist::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_chat() {
+		$options = Views\Chat::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_simple() {
+		$options = Views\Simple::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_standard() {
+		$options = Views\Standard::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_icons() {
+		$options = Views\Icons::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_quote() {
+		$options = Views\Quote::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_timeline() {
+		$options = Views\Timeline::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
+	}
+	public function create_footer() {
+		$options = Views\Footer::create();
+		add_action('acf/init', function() use ($options) {
+			acf_add_local_field_group($options->build());
+		});
 	}
 }
 

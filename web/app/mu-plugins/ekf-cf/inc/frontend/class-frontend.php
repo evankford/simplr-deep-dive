@@ -77,7 +77,7 @@ class Frontend {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->ekf_cf, \EKF_CF\ekf_cf_URL . 'assets/css/ekf-cf-frontend.css', array(), false, 'all' );
+		// wp_enqueue_style( $this->ekf_cf, \EKF_CF\ekf_cf_URL . 'assets/css/ekf-cf-frontend.css', array(), false, 'all' );
 	}
 
 	/**
@@ -99,7 +99,7 @@ class Frontend {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->ekf_cf, \EKF_CF\ekf_cf_URL . 'assets/js/frontend.js', false, false );
+		// wp_enqueue_script( $this->ekf_cf, \EKF_CF\ekf_cf_URL . 'assets/js/fields.js', false, false );
 
 	}
 
