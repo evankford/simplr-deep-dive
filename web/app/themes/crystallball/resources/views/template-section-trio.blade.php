@@ -35,7 +35,7 @@
   <hr class="h-1 bg-gray w-full max-w-3xl m-4 lg:m-10">
 
   <div class="container mx-auto  max-w-3xl mx-auto py-6 md:py-12 ">
-    <h2 data-anim-in class="header-mega line-accent max-w-3xl mb-6 lg:mb-8">{{$more_title}}</h2>
+    <h2 data-anim-in class="header-resp line-accent max-w-3xl mb-6 lg:mb-8">{{$more_title}}</h2>
     <ul data-anim-in-children="">
       @foreach ($icon_list as $item)
         <li class="flex m-4 text-lg">

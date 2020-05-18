@@ -15,10 +15,15 @@ html {
 
 sub, sup {
   display: inline-block;
+  margin-right: 0.3em;
 }
 
 .section-wrap {
-  @apply w-full flex flex-col items-center content-center min-h-screen relative bg-var-bg text-var-text
+  @apply w-full flex overflow-hidden flex-col items-center content-center relative bg-var-bg text-var-text;
+
+  @screen md {
+    @apply min-h-screen
+  }
 }
 .max-w-90 {
   max-width: 90%;
@@ -72,7 +77,7 @@ sub, sup {
 
 .subheader-resp {
 
-  @apply antialiased leading-tight font-bold;
+  @apply antialiased leading-snug font-medium;
   letter-spacing: -0.035em;
   font-size: calc(22px + 0.36vw);
 
@@ -134,4 +139,11 @@ sub, sup {
 .timeline-grad {
   background: linear-gradient(to right, var(--color-background), var(--color-accent));
   width: calc(100% + 12rem);
+}
+
+.rounded-tl-huge {
+  border-top-left-radius: calc(5em + 4vw);
+}
+.rounded-br-huge {
+  border-bottom-right-radius: calc(5em + 4vw);
 }

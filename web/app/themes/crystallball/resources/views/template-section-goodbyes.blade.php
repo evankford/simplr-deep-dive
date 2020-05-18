@@ -14,7 +14,7 @@
     }
   </style>
 
-  <div class="flex flex-wrap items-center md:items-start md:mt-32 lg:pt-64 w-auto max-w-5xl min-h-90h">
+  <div class="flex flex-wrap items-center md:items-start md:mt-32 p-8 lg:pt-64 w-auto max-w-5xl py-32 md:py-12 md:min-h-90h">
     <h2 class="header-resp flex-none min-w-full md:min-w-0 mt-auto md:m-3">Goodbye</h1>
     <div class="goodbye-list__outer mb-auto md:m-3 flex-none">
       <ul class="goodbye-list">

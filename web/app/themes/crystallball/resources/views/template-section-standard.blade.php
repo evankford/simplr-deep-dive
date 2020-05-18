@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" class="section-wrap py-0 bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" class="section-wrap p-8 md:p-12 bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};
@@ -14,12 +14,12 @@
     }
   </style>
   @include('partials.icon-header')
-  <div class="container m-auto py-32 first:py-8 flex items-center justify-center ">
-    <div class="flex-full md:flex-1/2 p-6">
+  <div class="container m-auto py-32 first:py-8 md:flex-row flex-col-reverse flex flex-wrap items-center justify-center ">
+    <div class="flex-full w-full md:w-auto md:flex-1/2 p-6">
       @include('partials.section-header')
       @include('partials.image-element', ['image'=> $left_image, 'args' => ["classes"=>"mt-8 max-w-md", "max_width" => 750]])
     </div>
-    <div class="flex-full md:flex-1/2 p-6">
+    <div class="flex-full w-full md:w-auto md:flex-1/2 p-6">
       @include('partials.image-element', ['image'=> $right_image, 'args' => ["classes"=> "max-w-lg", "max_width" => 750]])
       <div>
   </div>

@@ -19,9 +19,11 @@ $success-green: hsl(120, 100%, 35%);
   z-index: 100000;
   opacity: 0;
   transition: transform 800ms 300ms $ease-quart, opacity 900ms $ease;
+  pointer-events: none;
 
   .authwall--up & {
     transform: translate3d(-50%, 0, 0);
+    pointer-events: all;
     opacity: 1;
     &.success {
       transform: translate3d(-50%, -90px, 0);

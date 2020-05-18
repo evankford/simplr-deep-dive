@@ -14,7 +14,7 @@
     }
   </style>
   @include('partials.icon-header')
-  <div class="container p-8 md:p-12 lg:pt-16 m-auto items-center flex flex-wrap lg:flex-nowrap">
+  <div class="container p-8 md:p-12 py-20 lg:pt-32 m-auto items-center flex flex-wrap lg:flex-nowrap">
     <div class="flex-300 lg:pr-6">
       @include('partials.section-header')
     </div>

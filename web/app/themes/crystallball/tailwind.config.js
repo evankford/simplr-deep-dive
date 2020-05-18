@@ -77,7 +77,6 @@ module.exports = {
       borderRadius: {
         xl: "25px",
         half: "5em",
-        huge: "50%"
       },
       letterSpacing: {
         ultra: "0.2em"

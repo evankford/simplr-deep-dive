@@ -53,15 +53,16 @@ export default class Slider {
     window.addEventListener('changeSlide', self.changeSlide)
   }
 
-  changeSlide(index) {
+  changeSlide(index = 0) {
 
+    this.currentSection = this.sections[index]
   }
 
   handleScroll() {
     if (this.checkScrollDirection() == 'down') {
       console.log("Scrolled Down")
-      if (this.currentSection.ready) {
-        changeSlide(this.currentIndex + 1)
+      if (this.currentSection.ready && this.currentIndex < this.sections.length - 1) {
+        this.changeSlide(this.currentIndex + 1)
       } else {
         this.currentSection.progress()
       }

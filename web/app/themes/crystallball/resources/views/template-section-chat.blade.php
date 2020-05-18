@@ -18,7 +18,7 @@
       <h2 class="container max-w-3xl mx-auto header-resp text-center">
         {{$chat_header}}</h2>
       </div>
-    <div class="flex-1/2  lg:pt-48  bg-var-bg relative flex flex-col items-center justify-center">
+    <div class="flex-1/2 p-8 pt-48  bg-var-bg relative flex flex-col items-center justify-center">
       <div data-anim-loader="" class="absolute inset-half">
         @include('partials.dot-loader')
       </div>

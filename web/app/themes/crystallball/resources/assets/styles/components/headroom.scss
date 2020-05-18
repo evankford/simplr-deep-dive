@@ -31,6 +31,7 @@ header.banner {
 
   &.headroom.js {
     position: fixed;
+    top: 0;
     animation-duration: 300ms;
     animation-timing-function: $ease;
     animation-fill-mode: both;
@@ -41,6 +42,10 @@ header.banner {
   }
 
   &.headroom--not-top {
+    .site-logo::before {
+      opacity: 1
+    }
+
     }
 
   &.headroom--unpinned {
@@ -57,5 +62,15 @@ header.banner {
         opacity: 1;
       }
     }
+  }
+}
+
+.site-logo  {
+  position: relative;
+  &::before {
+    @extend %psuedo;
+    background: $color__darkblue;
+    @include transition;
+    opacity: 0;
   }
 }

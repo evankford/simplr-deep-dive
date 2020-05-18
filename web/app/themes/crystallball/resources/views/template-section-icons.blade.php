@@ -13,7 +13,7 @@
     }
   </style>
   <div class="block lg:flex w-full h-full max-w-7xl m-auto">
-    <div class="flex-1/2 overflow-hidden relative rounded-tl-huge rounded-br-huge bg-var-text p-12 lg:p-24">
+    <div class="flex-1/2 overflow-hidden relative rounded-tl-huge rounded-br-huge bg-var-text p-12 py-24 lg:px-24">
       <div class="inner mx-auto max-w-md text-left bg-var-text text-var-bg">
         @include('partials.image-element', ['image'=> $left_logo, 'args' => ["classes" => 'inline-block max-w-3xs h-12 object-contain-child']])
         <p class="my-6 text-lg">{{$left_text}}</p>
