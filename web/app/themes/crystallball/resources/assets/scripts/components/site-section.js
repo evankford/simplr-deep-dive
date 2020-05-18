@@ -13,6 +13,9 @@ constructor(el) {
   this.current = this.setCurrent.bind(this);
   this.next = this.setNext.bind(this);
   this.prev = this.setPrev.bind(this);
+
+  this.progress = this.progressStep.bind(this)
+  this.regress = this.regressStep.bind(this)
 }
 
   init() {
@@ -38,5 +41,12 @@ constructor(el) {
   setBehind() {
     this.el.setAttribute('data-position', 'behind')
     this.animator.stop();
+  }
+
+  progressStep() {
+
+  }
+  regressStep() {
+
   }
 }

@@ -6,8 +6,7 @@
 @import 'common/global';
 
 /** Components */
-@import 'components';
-@import 'components/rte';
+// @import 'components/index';
 
 /** Partials */
 @import 'partials/header';
@@ -19,9 +18,6 @@
 
 @import 'animations/animations';
 @import 'auth/auth';
-
-html {
-}
 
 #MainContent {
   &>*:first-child {

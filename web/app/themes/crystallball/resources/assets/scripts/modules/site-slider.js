@@ -1,5 +1,7 @@
 import Section from '../components/site-section';
 import queryString from 'query-string';
+import {debounce } from 'throttle-debounce'
+
 
 // var activeEvent = new Event('slideActive');
 // var inactiveEvent = new Event('slideInactive');
@@ -13,6 +15,8 @@ export default class Slider {
     this.currnentSection = false;
 
     this.oldScroll = 0 //for scrolldirection
+
+    this.scroll = this.handleScroll.bind(this);
     this.init()
   }
   init() {
@@ -44,7 +48,7 @@ export default class Slider {
 
   setupListeners() {
     var self = this;
-    window.addEventListener('scroll', self.handleScroll)
+    window.addEventListener('scroll', debounce(200, self.scroll))
     window.addEventListener('keydown', self.handleKey)
     window.addEventListener('changeSlide', self.changeSlide)
   }
@@ -53,12 +57,16 @@ export default class Slider {
 
   }
 
-handleScroll() {
+  handleScroll() {
     if (this.checkScrollDirection() == 'down') {
-
-      if (this.currnentSection.ready) {
+      console.log("Scrolled Down")
+      if (this.currentSection.ready) {
         changeSlide(this.currentIndex + 1)
-      } else (this.currnentSection )
+      } else {
+        this.currentSection.progress()
+      }
+    } else {
+      console.log("Scrolled Up");
     }
   }
 
