@@ -52,7 +52,7 @@ $success-green: hsl(120, 100%, 35%);
   }
   span.logo {
     position: absolute;
-    top: -170px;
+    top: -240px;
     left: 50%;
 
     transform: translateX(-50%);
@@ -64,7 +64,7 @@ $success-green: hsl(120, 100%, 35%);
     z-index: 0;
     @include media-query($small) {
       width: 85px;
-      top: -115px;
+      top: -155px;
     }
     img {
       width: 100%;
