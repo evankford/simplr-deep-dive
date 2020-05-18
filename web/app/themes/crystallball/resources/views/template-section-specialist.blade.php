@@ -31,8 +31,8 @@
         @include('partials.image-element', ['image'=> $specialist_image, 'args' => ['is_bg' => true, 'max_width' => 750]])
       </div>
       <div class="max-w-2xs mt-4 mx-auto">
-        <h4 class="font-bold text-lg my-4">{{$name}}</h4>
-        <div class="rte -mt-4">{!!$info!!}</div>
+        <h4 class="font-bold text-lg lg:text-xl my-6">{{$name}}</h4>
+        <div class="rte lg:text-lg -mt-4">{!!$info!!}</div>
       </div>
     </div>
   </div>
