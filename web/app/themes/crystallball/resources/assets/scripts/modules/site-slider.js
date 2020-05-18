@@ -12,7 +12,7 @@ export default class Slider {
 
     this.sections = []
     this.currentIndex = -1;
-    this.currnentSection = false;
+    this.currentSection = false;
 
     this.oldScroll = 0 //for scrolldirection
 
