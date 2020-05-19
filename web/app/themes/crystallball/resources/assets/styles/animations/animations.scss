@@ -25,6 +25,23 @@ html:not(.no-js) {
     opacity: 0.6
   }
 }
+@keyframes backforth {
+  0% {
+      transform: translate3d(0%, 0, 0);
+  }
+  25% {
+    transform: translate3d(-50%, 0 0)
+  }
+  50% {
+    transform: translate3d(0%, 0, 0);
+  }
+  75% {
+    transform: translate3d(50%, 0 0)
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
 
 [data-rotate-me] {
   animation: rotate 30s linear infinite;
@@ -39,6 +56,24 @@ html:not(.no-js) {
 [data-pulse-me] {
     transform-origin: 50% 50%;
     animation: pulse 5s alternate-reverse linear infinite
+  }
+
+  [data-back-forth] {
+    transform-origin: 50% 50%;
+    animation: backforth 35s alternate-reverse linear infinite;
+    &:nth-child(2), [data-back-forth="2"] {
+      animation: backfforth 3s alternate linear infinite;
+    }
+    &:nth-child(3),  [data-back-forth="3"]{
+      animation-duration: 40s;
+      animation-delay:4s
+    }
+    &:nth-child(4),  [data-back-forth="4"] {
+      animation-duration: 42s;
+      animation-direction: alternate;
+    }
+
 }
 
+@import 'slides';
 @import 'ball';

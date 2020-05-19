@@ -25,10 +25,12 @@
 @include('partials.pitch-header')
 
 {{-- {{var_dump($query)}} --}}
-
+@php $loopIndex = 0; @endphp
 @posts
   @php $slug = str_replace('.blade.php' , '' , get_page_template_slug());@endphp
-  @include($slug)
+  @include($slug, ['index' => $loopIndex])
+
+  @php $loopIndex++; @endphp
 @endposts
 
 

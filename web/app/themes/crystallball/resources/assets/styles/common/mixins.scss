@@ -64,8 +64,8 @@ $breakpoints: (
 }
 
 $shortTransitionTime: 250ms;
-$mediumTransitionTime: 520ms;
-$longTransitionTime: 700ms;
+$mediumTransitionTime: 600ms;
+$longTransitionTime: 1000ms;
 
 $delayFirst: 140ms;
 $delaySecond: 140ms * 2;
@@ -92,7 +92,7 @@ $delayFifth: 140ms * 5;
 }
 
 
-$ease: cubic-bezier(0.77, 0, 0.175, 1);
+$ease: cubic-bezier(0.76, 0, 0.24, 1);
 
 %psuedoish {
   position: absolute;

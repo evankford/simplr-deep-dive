@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" class="section-wrap p-8 bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" data-index="{{$index}}"  class="section-wrap p-8 bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};
@@ -14,7 +14,7 @@
     }
   </style>
   <div class="container w-full m-auto p-8 md:p-12 lg:16">
-    <h1 class="text-3xl lg:text-5xl font-medium leading-tight text-center">{{$header}}</h1>
+    <h1 data-anim-in class="text-3xl transform--middle lg:text-5xl font-medium leading-tight text-center">{{$header}}</h1>
     @include('partials.trio-graph')
     <ul class="flex flex-wrap lg:flex-nowrap graph-list text-lg">
       <li data-step="1" class="p-4 md:p6 lg:p-8 text-darkgray step">
@@ -36,7 +36,7 @@
 
   <div class="container mx-auto  max-w-3xl mx-auto py-6 md:py-12 ">
     <h2 data-anim-in class="header-resp line-accent max-w-3xl mb-6 lg:mb-8">{{$more_title}}</h2>
-    <ul data-anim-in-children="">
+    <ul data-anim-in-children="200">
       @foreach ($icon_list as $item)
         <li class="flex m-4 text-lg">
           <div class="section-icon">

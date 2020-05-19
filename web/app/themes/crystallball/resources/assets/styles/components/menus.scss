@@ -170,7 +170,7 @@ button[data-mobile-menu-toggle] {
 }
 
 [data-mobile-menu] {
-  @include transition(0ms, 'medium');
+  @include transition(0ms, 'long');
   transform: translateX(102%);
 }
 

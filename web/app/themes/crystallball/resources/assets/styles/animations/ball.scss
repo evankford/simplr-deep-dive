@@ -1,0 +1,12 @@
+.section-ball {
+  svg {
+    @include transition(0ms, 'long');
+    transform: scale(0)
+  }
+
+  &.section-open {
+    svg {
+      transform: scale(1);
+    }
+  }
+}

@@ -3,7 +3,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"  data-position="ahead" class="w-full p-4 md:p-12 flex flex-col items-center content-center min-h-screen relative bg-var-bg text-var-text bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"  data-position="ahead" data-index="{{$index}}"  class="section-ball w-full p-4 md:p-12 flex flex-col items-center content-center min-h-screen relative bg-var-bg text-var-text bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};

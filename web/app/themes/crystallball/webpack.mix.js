@@ -4,6 +4,7 @@ require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-purgecss');
 require('laravel-mix-copy-watched');
 
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

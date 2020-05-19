@@ -7,7 +7,6 @@ export default class AuthWall {
   constructor(el) {
     this.el = el;
     this.toaster = el.querySelector('.auth-toaster');
-    console.log(el)
     this.site = document.getElementById('MainContent');
     this.footer = document.querySelector('.site-footer')
     this.form = el.querySelector("[data-hubspot-form]");

@@ -1908,6 +1908,11 @@ body-parser@1.19.0:
     raw-body "2.4.0"
     type-is "~1.6.17"
 
+body-scroll-lock@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-3.0.2.tgz#97df9bb3b17a0140c4a09b3568d146ae9af6b981"
+  integrity sha512-PtItUun94iIupKry8J/h6SfRCLWZnly77KbPsTSKALmxfR282L8R0Ujkv7bydSZvLxAJS4sBJ3y/E6X8gYkGrQ==
+
 bonjour@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bonjour/-/bonjour-3.5.0.tgz#8e890a183d8ee9a2393b3844c691a42bcf7bc9f5"
@@ -5052,6 +5057,11 @@ is-callable@^1.1.4, is-callable@^1.1.5:
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.1.5.tgz#f7e46b596890456db74e7f6e976cb3273d06faab"
   integrity sha512-ESKv5sMCJB2jnHTWZ3O5itG+O128Hsus4K4Qh1h2/cgn2vbgnLSVqfV46AeJA9D5EeeLa9w81KUXMtn34zhX+Q==
 
+is-client@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/is-client/-/is-client-0.0.2.tgz#725f5492c8cffa59d0a2149b4bfea62d437a0462"
+  integrity sha1-cl9UksjP+lnQohSbS/6mLUN6BGI=
+
 is-color-stop@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-color-stop/-/is-color-stop-1.1.0.tgz#cfff471aee4dd5c9e158598fbe12967b5cdad345"
@@ -5679,7 +5689,7 @@ lodash.memoize@^4.1.2:
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
 
-lodash.throttle@^4.0.1:
+lodash.throttle@^4.0.1, lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
@@ -8129,6 +8139,15 @@ scrollmagic@^2.0.7:
   resolved "https://registry.yarnpkg.com/scrollmagic/-/scrollmagic-2.0.7.tgz#4139216f3849d226e38b3ef1e5dbbacf25190b35"
   integrity sha512-Qu23XB3YTBhqbnTIkyVhVAEP/7r2APvW+QFfxCpd6LvJ5byCnlvSMzSeBdpyKbDKXBxVWGE9XFXUTvue3B7VrQ==
 
+scrollscene@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/scrollscene/-/scrollscene-0.0.18.tgz#c5be6a7362f8cd05ac11787087df0d2ba40677ae"
+  integrity sha512-B0rAefEjGlK72jUB6D+fs2V7mFI9JvGz7FZBfCahXLHtBejs/ny3oDKV8yJhqj5TPb2oJgxhU2sD2sejAciJ9g==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    is-client "^0.0.2"
+    lodash.throttle "^4.1.1"
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -8988,6 +9007,11 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+swipe-detect@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/swipe-detect/-/swipe-detect-1.0.1.tgz#02da15ce856aa9db51723e1a71fdbe8e2ce84538"
+  integrity sha512-/Bo8OUr/Mak2B5ITCkTQ3WOjLn12H2QDvi4QpRx3T1/NyhlSRnYQyUbIWr8Fro/wJre4DvtOBZTW+9h8wTR8zA==
 
 swiper@^5.3.8:
   version "5.3.8"

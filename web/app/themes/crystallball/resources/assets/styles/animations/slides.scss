@@ -1,0 +1,25 @@
+body.slidesActive {
+
+  #mainContent {
+    min-height: 100vh;
+  }
+}
+
+[data-position] {
+  --transformer: -50px
+}
+
+.transform--front {
+  // transition: transform 450ms $ease;
+  transform: translate3d(0,var(--transformer),0)
+}
+
+.transform--middle {
+  // transition: transform 450ms $ease;
+  transform: translate3d(0,calc(var(--transformer) * 0.5),0);
+}
+
+.transform--back {
+  // transition: transform 450ms $ease;
+  transform: translate3d(0, calc(var(--transformer)*0.2), 0)
+}

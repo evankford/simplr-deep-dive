@@ -5,7 +5,7 @@ if ($single_graph_content['Graph Style'] == 'Months') {
     $strings = array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC' );
 }
 @endphp
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 543 428" style="enable-background:new 0 0 543 428;" xml:space="preserve">
+<svg class="single-graph" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 543 428" style="enable-background:new 0 0 543 428;" xml:space="preserve">
 <style type="text/css">
 	.gst0{opacity:0.59;fill:none;stroke:#EDF1F5;stroke-width:1.44;stroke-linecap:square;enable-background:new    ;}
 	.gst1{fill-rule:evenodd;clip-rule:evenodd;fill:#B3B6CD;}
@@ -20,18 +20,18 @@ if ($single_graph_content['Graph Style'] == 'Months') {
 <path class="gst0" d="M1.4,169.1h540"/>
 <path class="gst0" d="M1.4,85.1h540"/>
 <path class="gst0" d="M1.4,1h540"/>
-<path class="gst1" d="M26.6,207.6h15v148.8h-15L26.6,207.6z"/>
-<path class="gst1" d="M70.6,246h15v110.4h-15V246z"/>
-<path class="gst1" d="M114.5,262.8h15v93.6h-15V262.8z"/>
-<path class="gst1" d="M158.5,262.8h15v93.6h-15V262.8z"/>
-<path class="gst1" d="M202.5,247.2h15v109.2h-15V247.2z"/>
-<path class="gst1" d="M246.4,218.4h15v138h-15V218.4z"/>
-<path class="gst1" d="M334.3,150h15v206.4h-15V150z"/>
-<path class="gst1" d="M290.4,194h15v162.4h-15V194z"/>
-<path class="gst1" d="M378.3,121h15v235.4h-15V121z"/>
-<path class="gst1" d="M422.3,95.1h15v261.3h-15V95.1z"/>
-<path class="gst1" d="M466.2,70h15v286.4h-15V70z"/>
-<path class="gst1" d="M510.2,75.6h15v280.8h-15V75.6z"/>
+<path class="gst1" style="transform-origin: bottom" d="M26.6,207.6h15v148.8h-15L26.6,207.6z"/>
+<path class="gst1" style="transform-origin: bottom" d="M70.6,246h15v110.4h-15V246z"/>
+<path class="gst1" style="transform-origin: bottom" d="M114.5,262.8h15v93.6h-15V262.8z"/>
+<path class="gst1" style="transform-origin: bottom" d="M158.5,262.8h15v93.6h-15V262.8z"/>
+<path class="gst1" style="transform-origin: bottom" d="M202.5,247.2h15v109.2h-15V247.2z"/>
+<path class="gst1" style="transform-origin: bottom" d="M246.4,218.4h15v138h-15V218.4z"/>
+<path class="gst1" style="transform-origin: bottom" d="M334.3,150h15v206.4h-15V150z"/>
+<path class="gst1" style="transform-origin: bottom" d="M290.4,194h15v162.4h-15V194z"/>
+<path class="gst1" style="transform-origin: bottom" d="M378.3,121h15v235.4h-15V121z"/>
+<path class="gst1" style="transform-origin: bottom" d="M422.3,95.1h15v261.3h-15V95.1z"/>
+<path class="gst1" style="transform-origin: bottom" d="M466.2,70h15v286.4h-15V70z"/>
+<path class="gst1" style="transform-origin: bottom" d="M510.2,75.6h15v280.8h-15V75.6z"/>
 <text transform="matrix(0.5 -0.866 0.866 0.5 18.762 421.28)" class="gst2 gst3 gst4">{{ $strings[0]}}</text>
 <text transform="matrix(0.5 -0.866 0.866 0.5 62.4734 421.28)" class="gst2 gst3 gst4">{{ $strings[1]}}</text>
 <text transform="matrix(0.5 -0.866 0.866 0.5 106.1851 421.28)" class="gst2 gst3 gst4">{{ $strings[2]}}</text>

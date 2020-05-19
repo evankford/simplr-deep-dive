@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" class="section-wrap  p-8 md:p-12 bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" data-index="{{$index}}"  class="section-wrap  p-8 md:p-12 bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};

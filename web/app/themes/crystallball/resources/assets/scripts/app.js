@@ -25,8 +25,6 @@ import findAndReplaceDOMText from "@thehonestscoop/findandreplacedomtext";
 
 function findAndReplaceText() {
   replacers.forEach(replacer => {
-    console.log("Replacing");
-    console.log(replacer);
     findAndReplaceDOMText(document.body, replacer)
   })
 }

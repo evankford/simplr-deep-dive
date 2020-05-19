@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" class="section-wrap bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" data-index="{{$index}}"  class="section-wrap bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};
@@ -22,7 +22,7 @@
       </div>
       <div class="flex-300 my-6 lg:pl-12">
         <h2 data-anim-in class="header-resp mb-6">{{$single_graph_content['Title']}}</h2>
-        <ul data-anim-in-children  class="my-4">
+        <ul data-anim-in-children  class="my-6 md:text-lg">
           @foreach($single_graph_content['List'] as $item)
           @if ($single_graph_content['List Style'] == 'months')
           <li class="my-4 list-none">

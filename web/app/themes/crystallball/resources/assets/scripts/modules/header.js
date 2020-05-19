@@ -141,6 +141,21 @@ export default class Header {
     })
   }
 
+  scrollToSection() {
+    this.links = this.el.querySelector('a');
+    links.forEach(element => {
+    element.addEventListener('click', function (event) {
+      let hashFinder = /\#(.*)/;
+      let targEl = document.getElementById(hashFinder.exec(event.target.href)[1]);
+      if (targEl) {
+        event.preventDefault();
+        targEl.scrollIntoView({ behavior: "smooth" });
+        document.body.classList.remove('mobileNavOpen');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }
 
+    })
+  })
+  }
 }
 

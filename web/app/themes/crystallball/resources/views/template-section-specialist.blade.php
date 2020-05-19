@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" class="section-wrap bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" data-index="{{$index}}"  class="section-wrap bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};
@@ -25,7 +25,7 @@
         @endforeach
       </ul>
     </div>
-    <div class="flex-300 flex p-4 md:p-8 flex-wrap items-center justify-center mx-auto" data-anim-in-chilren="">
+    <div data-anim-in class="flex-300 flex p-4 md:p-8   flex-wrap items-center justify-center mx-auto" data-anim-in-chilren="">
       <div class="flex-200 rounded-full md:max-w-sm block overflow-hidden border-white border-8 w-full relative">
         <div class="pb-full"></div>
         @include('partials.image-element', ['image'=> $specialist_image, 'args' => ['is_bg' => true, 'max_width' => 750]])
