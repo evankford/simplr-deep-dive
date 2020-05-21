@@ -14,7 +14,7 @@
     }
   </style>
   @include('partials.icon-header')
-  <div class="container p-8 py-20 md:p-12 lg:pt-16 m-auto items-center block lg:flex flex-wrap lg:flex-nowrap">
+  <div class="container p-8 py-20 md:p-12 lg:pt-16 m-auto items-center block lg:flex flex-wrap lg:flex-no-wrap">
     <div class="flex-300 lg:pr-6">
       @include('partials.section-header')
       <ul class="flex flex-wrap -ml-2" data-anim-in-chilren="">

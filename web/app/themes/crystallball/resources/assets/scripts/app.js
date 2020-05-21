@@ -7,6 +7,7 @@ import 'lazysizes';
 import "lazysizes/plugins/parent-fit/ls.parent-fit";
 
 import objectFitImages from 'object-fit-images';
+
 objectFitImages();
 
 function initModules(parent = document) {

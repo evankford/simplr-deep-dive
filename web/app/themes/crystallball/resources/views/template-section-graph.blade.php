@@ -16,7 +16,7 @@
 
  @include('partials.icon-header')
   <div class="container p-8 md:p-12  mx-auto mt-auto lg:pt-16">
-    <div class="flex flex-wrap lg:flex-nowrap items-center justify-center">
+    <div class="flex flex-wrap lg:flex-no-wrap items-center justify-center">
       <div class="flex-300 max-w-lg lg:pr-6">
         @include('partials.single-graph')
       </div>

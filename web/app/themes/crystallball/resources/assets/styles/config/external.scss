@@ -155,3 +155,7 @@ sub, sup {
     @apply -translate-y-1
   }
 }
+.try-shadow {
+   -webkit-filter: drop-shadow( 3px 3px 20px rgba(0, 0, 0, .17));
+  filter: drop-shadow( 3px 3px 20px rgba(0, 0, 0, .17));
+}

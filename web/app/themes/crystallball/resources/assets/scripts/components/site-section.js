@@ -27,9 +27,6 @@ runScene(observed) {
 }
 
 checkScrollStatus() {
-  console.log(this.el.scrollHeight)
-  console.log(this.el.offsetHeight)
-  console.log(this.el.scrollTop)
   var rect = this.el.getBoundingClientRect()
   var status = {
     top: false,

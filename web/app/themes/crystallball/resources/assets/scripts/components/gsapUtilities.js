@@ -1,10 +1,10 @@
 import * as ScrollMagic from "scrollmagic"; // Or use scrollmagic-with-ssr to avoid server rendering problems
-import { TweenMax, TimelineMax , Power2} from "gsap"; // Also works with TweenLite and TimelineLite
+import { TweenMax, TimelineMax , Power2, gsap} from "gsap"; // Also works with TweenLite and TimelineLite
 // import { DrawSVGPlugin } from './js/vendor/DrawSVGPlugin';
 // import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 // import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
-// import "Scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
+// import "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
 
 
 export default class Animator {
@@ -12,7 +12,7 @@ export default class Animator {
     this.el = el
       this.controller = new ScrollMagic.Controller()
       this.init();
-    // ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
+    // ScrollMagicPluginGsap(ScrollMagic,gsap);
   }
 
   start() {

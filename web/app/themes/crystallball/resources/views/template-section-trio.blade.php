@@ -16,7 +16,7 @@
   <div class="container w-full p-8 m-auto md:p-12 lg:16">
     <h1 data-anim-in class="text-3xl font-medium leading-tight tracking-tight text-center transform--middle lg:text-5xl">{{$header}}</h1>
     @include('partials.trio-graph')
-    <ul class="flex flex-wrap text-lg lg:flex-nowrap graph-list">
+    <ul class="flex flex-wrap text-lg md:flex-no-wrap graph-list">
       <li data-step="1" class="p-4 text-lg hover-up md:p6 lg:p-8 text-darkgray md:text-xl text-step ">
         <span class="block uppercase">A.</span>
         {!!$graph1!!}

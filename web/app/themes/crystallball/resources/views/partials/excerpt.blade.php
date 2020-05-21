@@ -1,4 +1,4 @@
-<div class="excerpt--{{get_post_type()}} flex flex-wrap items-stretch justify-center m-2 text-black bg-white md:flex-nowrap shadow-fun flex-full lg:flex-some">
+<div class="excerpt--{{get_post_type()}} flex flex-wrap items-stretch justify-center m-2 text-black bg-white md:flex-no-wrap shadow-fun flex-full lg:flex-some">
   <div class="relative h-auto pb-48 flex-200">
     @include('partials.image-element' , ['image' => get_post_thumbnail_id(), 'args' => ['is_bg' => true, 'max_width' => 600]])
   </div>

@@ -2,7 +2,7 @@ import Section from '../components/site-section';
 import queryString from 'query-string';
 // import {debounce } from 'throttle-debounce'
 
-import * as ScrollMagic from "scrollmagic";
+import ScrollMagic from "scrollmagic";
 import {
   TimelineMax,
   TweenMax,
@@ -15,11 +15,10 @@ import {
 import { DrawSVGPlugin } from "../components/DrawSVGPlugin";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
+ ScrollMagicPluginGsap(ScrollMagic, gsap);
+gsap.registerPlugin(DrawSVGPlugin, CSSPlugin);
 
-gsap.registerPlugin(DrawSVGPlugin);
-
-const plugins = [CSSPlugin];
-console.log(plugins);
+const plugins = [CSSPlugin, DrawSVGPlugin];
 
 
 
@@ -28,7 +27,7 @@ console.log(plugins);
 
 export default class Slider {
   constructor(el) {
-    ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
+
     this.el = el;
 
     this.sections = []
@@ -64,7 +63,7 @@ export default class Slider {
     this.sections.forEach(section=> {
       section.tl = new TimelineMax();
       section.tl.fromTo(section.el , {"--transformer": '-50px'}, {"--transformer": '50px', duration: 1});
-      var pinner = new ScrollMagic.Scene({
+      section.pinner = new ScrollMagic.Scene({
         triggerElement: section.el,
         triggerHook: 0,
         duration: "100%"
@@ -75,7 +74,7 @@ export default class Slider {
       var list = section.el.querySelector('.goodbye-list')
       if (list) {
         section.tl.to(list, 3, {y: '-78.5%'});
-        pinner.setPin(section.el)
+        section.pinner.setPin(section.el)
       }
 
 
@@ -95,10 +94,9 @@ export default class Slider {
 
         var textIndex = 0;
         timelineTexts.forEach(text=> {
-          textIndex++;
           var textPercent = (1 / (timelineTexts.length + 2))*textIndex ;
-          console.log(textPercent)
-          timelineTl.from(text, 0.1, {autoAlpha: 0, yPercent: 10}, textPercent)
+          textIndex++;
+          timelineTl.from(text, 0.2, {autoAlpha: 0, yPercent: 10}, textPercent)
         })
 
         addnlTl
@@ -107,10 +105,67 @@ export default class Slider {
           .addTo(this.controller);
       }
 
+      var chat = section.el.querySelector('[data-chat]');
+      if (chat) {
+        var newController = new ScrollMagic.Controller();
+        var chatScene = new ScrollMagic.Scene({
+          duration: "160%",
+          triggerElement: section.el,
+          offset: 0,
+          triggerHook: "onLeave"
+        }).addTo(newController);
 
+        let chatTL = new TimelineMax();
+        let chatOuter = chat.querySelector('.chat-outer');
+        let chatInner = chatOuter.querySelector(".chat-inner");
+        console.log(chatInner)
+        let chatHt = chatInner.getBoundingClientRect().height;
+        console.log(chatHt)
+        let chatTop = chatInner.getBoundingClientRect().top;
+        let chats = chatOuter.querySelectorAll(".chat-bubble");
+        let offsets = [];
+        let offsetsOuter = [];
+          chats.forEach(el => {
+            offsets.push(
+              (
+                (1 - (el.getBoundingClientRect().top - chatTop) / chatHt + 0.02) *
+                100
+              ).toFixed(4) + "%"
+            );
+            offsetsOuter.push(
+              (
+                -(1 - (el.getBoundingClientRect().top - chatTop) / chatHt) * 50
+              ).toFixed(4) + "%"
+            );
+          });
+
+
+          console.log(offsets)
+          console.log(offsetsOuter)
+          chatOuter.style.height = chatHt + "px";
+          chatOuter.style.transform = "translateY(" + offsetsOuter[1] + ")";
+          chatInner.style.transform = "translateY(" + offsets[1] + ")";
+
+          chatTL.to(chatInner, 0, { y: '100%' }, 0);
+          chatTL.to(chatInner, 0, { y: offsets[1] }, 0.01);
+          chatTL.to(chatOuter, 0, { y: offsetsOuter[1] }, 0.01);
+          chatTL.to(chatInner, 0, { y: offsets[2] }, 0.3);
+          chatTL.to(chatOuter, 0, { y: offsetsOuter[2] }, 0.3);
+          chatTL.to(chatInner, 0, { y: offsets[3] }, 0.6);
+          chatTL.to(chatOuter, 0, { y: offsetsOuter[3] }, 0.6);
+          chatTL.to(chatInner, 0, { y: "0%" }, .9);
+          chatTL.to(chatOuter, 0, { y: "0%" }, .9);
+          chatScene.setTween(chatTL);
+          chatScene.setPin(section.el);
+          chatScene.on("enter", function() {
+            chat.classList.add("section-loaded");
+          });
+      }
 
     })
   }
+
+
 
   startSingleGraph() {
     var graph = document.querySelector(".single-graph");
@@ -142,9 +197,6 @@ export default class Slider {
 
   }
 
-  startTimeline(section) {
-
-  }
 
 
   start() {
@@ -180,16 +232,12 @@ export default class Slider {
 
   }
 
-  checkActiveSections(entries, observer) {
+  checkActiveSections(entries) {
     entries.forEach(entry => {
       var index = entry.target.getAttribute('data-index');
       var obj = this.sections[index];
       if (entry.isIntersecting) {
         obj.isCurrent();
-
-        console.log(entry.target);
-
-
         var graph = entry.target.querySelector('.single-graph');
         if (graph) {
           this.startSingleGraph();
@@ -198,10 +246,6 @@ export default class Slider {
         var trio = entry.target.querySelector('.graph-trio');
         if (trio) {
           var tl = this.doTrio();
-        }
-        var timeline = entry.target.querySelector('[data-timeline]');
-        if (timeline) {
-          this.startTimeline(entry);
         }
 
 
@@ -243,12 +287,17 @@ export default class Slider {
 
 
      textboxes.forEach(textbox => {
-       console.log(textbox);
        textbox.addEventListener("click", () => {
          var step = textbox.getAttribute("data-step");
-         trioTl.pause();
-         trioTl.tweenFromTo("step" + step, "step" + (step + 1));
-         trioTl.pause();
+         if (step == '3' || step == 3) {
+          trioTl.tweenFromTo("step3", "end");
+          //  trioTl.play();
+          trioTl.stop();
+         } else {
+          //  trioTl.pause();
+           trioTl.tweenFromTo("step" + step, "step" + (step + 1));
+           trioTl.pause();
+         }
        });
      });
 
@@ -274,7 +323,7 @@ export default class Slider {
           "step1"
         )
         .from(step1.trend, 1, { drawSVG: 0, ease: Power0.easeInOut }, "step1")
-        // .addPause()
+        .addPause()
         //Animate bar 1 out!
         .to(
           step1.textBox,
@@ -282,6 +331,8 @@ export default class Slider {
           { color: "#999999", ease: Power0.easeInOut, delay: 2.7 },
           "step1out"
         )
+
+
         .to(
           step1.text,
           0.25,
@@ -313,7 +364,7 @@ export default class Slider {
           { color: "#1C3773", ease: Power0.easeInOut },
           "step2"
         )
-        // .addPause()
+        .addPause()
         //Animate bar 1 out!
         .to(
           step2.textBox,
@@ -338,6 +389,7 @@ export default class Slider {
           { autoAlpha: 0, ease: Power0.easeInOut, delay: 2.7 },
           "step2out"
         )
+
         //Bar 3 in
         .from(
           step3.text,
@@ -352,6 +404,7 @@ export default class Slider {
           { color: "#1C3773", ease: Power0.easeInOut },
           "step3"
         )
+        .addLabel('end')
         .addPause();
 
 

@@ -1,7 +1,6 @@
 import * as ScrollMagic from "scrollmagic";
 import  {  TimelineMax, TweenMax, Power1} from 'gsap';
 // import { DrawSVGPlugin } from "./DrawSVGPlugin";
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
 
 
