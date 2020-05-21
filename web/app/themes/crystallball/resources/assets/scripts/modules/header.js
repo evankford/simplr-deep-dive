@@ -54,7 +54,7 @@ export default class Header {
 
     this.headroom = new Headroom(this.el, {
       "offset": 100,
-      "tolerance": 5,
+      "tolerance": 2,
     }).init();
   }
 
