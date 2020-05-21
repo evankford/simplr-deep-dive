@@ -14,25 +14,27 @@
     }
   </style>
 
-  <div class="flex flex-wrap items-center md:items-start md:mt-32 p-8 lg:pt-64 w-auto max-w-5xl py-32 md:py-12 md:min-h-90h" data-module="goodbyes">
-    <h2 data-anim-in class="header-resp flex-none min-w-full md:min-w-0 mt-auto md:m-3">Goodbye</h1>
-    <div class="goodbye-list__outer mb-auto md:m-3 flex-none">
-      <ul class="goodbye-list">
+  <div class="flex flex-wrap items-center w-auto max-w-5xl p-8 py-32 md:items-start md:mt-32 lg:pt-64 md:py-12 md:min-h-90h" data-module="goodbyes">
+    <h2 data-anim-in class="flex-none min-w-full mt-auto header-resp md:min-w-0 md:m-3">Goodbye</h1>
+    <div class="flex-none mb-auto goodbye-list__outer md:m-3">
+      <ul class="goodbye-list" data-anim-in>
         @foreach($goodbyes as $goodbye)
-          <li class="header-resp mb-4 goodbye-item">{{$goodbye['Text']}}</li>
+          <li class="mb-4 header-resp goodbye-item">{{$goodbye['Text']}}</li>
         @endforeach
       </ul>
+      <div class="absolute top-0 right-0 w-full overflow-visible">@include('partials.clouds')</div>
     </div>
 </div>
-  <div class="hello-section w-full max-w-6xl py-24 lg:py-32 items-center justify-center">
-    <div class="container max-w-2xl mx-auto md:max-w-6xl block md:flex flex-wrap items-center justify-center">
-      <div class="flex-300 p-6 mx-auto text-center md:text-left">
-        <h2 data-anim-in class="header-resp mb-4">{{$title1}} <span class="text-var-accent">{{$title2}}</span></h2>
-        <h3 data-anim-in class="font-medium subheader-resp text-2xl ">{{$subtitle}}</p>
+  <div class="items-center justify-center w-full max-w-6xl pb-32 hello-section lg:pb-48">
+    <div class="container flex-wrap items-center justify-center block max-w-2xl mx-auto md:max-w-6xl md:flex">
+      <div class="p-6 mx-auto text-center flex-300 md:text-left">
+        <h2 data-anim-in class="mb-4 header-resp">{{$title1}} <span class="text-var-accent">{{$title2}}</span></h2>
+        <h3 data-anim-in class="text-2xl font-medium subheader-resp ">{{$subtitle}}</p>
       </div>
-      <div data-anim-in class="transform--front flex-400 -m-12">
+      <div data-anim-in class="relative -m-12 blocktransform--front flex-400">
         {!! $svg !!}
       </div>
     </div>
   </div>
+
 </section>

@@ -27,19 +27,19 @@ html:not(.no-js) {
 }
 @keyframes backforth {
   0% {
-      transform: translate3d(0%, 0, 0);
+    transform: translateX(0%);
   }
   25% {
-    transform: translate3d(-50%, 0 0)
+    transform: translateX(12%)
   }
   50% {
-    transform: translate3d(0%, 0, 0);
+    transform: translateX(0%);
   }
   75% {
-    transform: translate3d(50%, 0 0)
+    transform: translateX(10%)
   }
   100% {
-    transform: translate3d(0%, 0, 0);
+    transform: translateX(0%);
   }
 }
 
@@ -59,17 +59,21 @@ html:not(.no-js) {
   }
 
   [data-back-forth] {
+    position: relative;
+    display:block;
+      // animation: rotate 30s linear infinite;
+
     transform-origin: 50% 50%;
-    animation: backforth 35s alternate-reverse linear infinite;
+    animation: backforth 102s alternate-reverse linear infinite;
     &:nth-child(2), [data-back-forth="2"] {
-      animation: backfforth 3s alternate linear infinite;
+      animation: backforth 63s alternate linear infinite;
     }
     &:nth-child(3),  [data-back-forth="3"]{
-      animation-duration: 40s;
+      animation-duration: 100s;
       animation-delay:4s
     }
     &:nth-child(4),  [data-back-forth="4"] {
-      animation-duration: 42s;
+      animation-duration: 95s;
       animation-direction: alternate;
     }
 

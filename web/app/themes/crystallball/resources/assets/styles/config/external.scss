@@ -147,3 +147,11 @@ sub, sup {
 .rounded-br-huge {
   border-bottom-right-radius: calc(5em + 4vw);
 }
+
+.hover-up {
+  @apply transition-transform duration-200 ease-linear transform cursor-pointer;
+
+  &:hover {
+    @apply -translate-y-1
+  }
+}

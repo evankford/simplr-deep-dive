@@ -14,13 +14,13 @@
     }
   </style>
   @include('partials.icon-header')
-  <div class="container m-auto p-6 md:p-8 py-32 first:py-8 flex flex-col items-center justify-center max-w-5xl">
+  <div class="container flex flex-col items-center justify-center max-w-5xl p-6 py-32 m-auto md:p-8 first:py-8" data-timeline>
     @include('partials.section-header')
-    <ul class="py-8 flex relative flex w-full" data-timeline="">
+    <ul class="relative flex w-full py-8" data-timeline="">
       @foreach ($timeline as $item)
-          <li class="flex-1/4 flex items-end justify-center p-2 md:p-4 text-sm md:text-base text-center leading-tight pb-12 relative timeline-item"><span>{{$item['Text']}}</span></li>
+          <li data-timeline-item class="relative flex items-end justify-center p-2 pb-12 text-sm leading-tight text-center flex-1/4 md:p-4 md:text-base timeline-item"><span>{{$item['Text']}}</span></li>
       @endforeach
-      <div class="absolute bottom-0 h-4 w-full timeline-grad -mx-24" data-timeline-grad></div>
+      <div data-timeline-timeline class="absolute bottom-0 w-full h-4 -mx-24 timeline-grad" data-timeline-grad></div>
     </ul>
   </div>
 </section>

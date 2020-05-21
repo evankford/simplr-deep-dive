@@ -3,12 +3,23 @@ import queryString from 'query-string';
 // import {debounce } from 'throttle-debounce'
 
 import * as ScrollMagic from "scrollmagic";
-import  { TimelineMax , TweenMax , Power2, CSSPlugin, gsap} from 'gsap';
+import {
+  TimelineMax,
+  TweenMax,
+  Power2,
+  Power0,
+  CSSPlugin,
+  Linear,
+  gsap
+} from "gsap/all";
 import { DrawSVGPlugin } from "../components/DrawSVGPlugin";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
 
 gsap.registerPlugin(DrawSVGPlugin);
+
+const plugins = [CSSPlugin];
+console.log(plugins);
 
 
 
@@ -51,22 +62,50 @@ export default class Slider {
   setupSectionScrollers() {
     var self = this;
     this.sections.forEach(section=> {
-      var transformerTL = new TimelineMax();
-      transformerTL.fromTo(section.el , {"--transformer": '-50px'}, {"--transformer": '50px', duration: 1});
+      section.tl = new TimelineMax();
+      section.tl.fromTo(section.el , {"--transformer": '-50px'}, {"--transformer": '50px', duration: 1});
       var pinner = new ScrollMagic.Scene({
         triggerElement: section.el,
         triggerHook: 0,
         duration: "100%"
       })
-      .setTween(transformerTL)
+      .setTween(section.tl)
       .addTo(this.controller)
 
       var list = section.el.querySelector('.goodbye-list')
       if (list) {
-        transformerTL.to(list, 3, {y: '-78.5%'});
+        section.tl.to(list, 3, {y: '-78.5%'});
         pinner.setPin(section.el)
       }
 
+
+      var timeline = section.el.querySelector("[data-timeline]");
+      if (timeline) {
+        var addnlTl =  new ScrollMagic.Scene({ triggerElement: section.el,
+        triggerHook: 0,
+        duration: "100%"
+        });
+        var timelineBar = timeline.querySelector('[data-timeline-timeline]')
+        var timelineTexts = timeline.querySelectorAll('[data-timeline-item]')
+
+        var timelineTl = new TimelineMax();
+
+
+        timelineTl.from(timelineBar, 1, {scaleX:0, ease: Linear, transformOrigin: 'left'},0)
+
+        var textIndex = 0;
+        timelineTexts.forEach(text=> {
+          textIndex++;
+          var textPercent = (1 / (timelineTexts.length + 2))*textIndex ;
+          console.log(textPercent)
+          timelineTl.from(text, 0.1, {autoAlpha: 0, yPercent: 10}, textPercent)
+        })
+
+        addnlTl
+          .setPin(section.el)
+          .setTween(timelineTl)
+          .addTo(this.controller);
+      }
 
 
 
@@ -74,28 +113,36 @@ export default class Slider {
   }
 
   startSingleGraph() {
-    var graph = this.el.querySelector('.single-graph')
+    var graph = document.querySelector(".single-graph");
+
+     if (graph.classList.contains("loaded")) {
+       return false;
+     }
+     graph.classList.add("loaded");
+     graph.classList.remove("hidden");
+
     var gtl = new TimelineMax({repeat: 0});
-      let bars = graph.querySelectorAll('.gst1');
-      // gtl.from('.graph-graph', 0.5, {opacity: 0}, 0)
-      let barTime = 0.5;
-      bars.forEach(el => {
-        barTime += 0.07
-        let rect= el.getBoundingClientRect();
-        let ht = rect.bottom - rect.top;
 
-        let getToSmall =  (0.2/(Math.sqrt(ht)))*0.5 + '%';
 
-        gtl.fromTo(el, 0.6, {scaleY: 0},  { scaleY: getToSmall, ease: Power2.easeOut, transformOrigin: "bottom", duration: 2}, barTime );
-      })
-      // gtl.staggerFrom('.gst1', 0.6, {height: "20px", ease: Power2.easeOut, transformOrigin: "bottom"}, 0.1, 0.56);
-      gtl.from('.gst6', 1.9, {drawSVG: 0}, 1.2);
-      gtl.staggerFrom('.gst0', 0.4, {autoAlpha: 0, ease: Power2.easeInOut}, 0.15, 0);
-      gtl.staggerFrom('.gst4', 0.4, {autoAlpha: 0, ease: Power2.easeInOut}, 0.15, 0.65);
-      gtl.staggerFrom('.gst5', 0.2, { opacity: 0, ease: Power2.easeInOut}, 0.05, 1.25);
-      // gtl.staggerFrom('.gst3', 0.2, { autoAlpha: 0, ease: Power2.easeInOut}, 0.05, 1.25);
+      gtl.staggerFrom('.single-box', 0.2,  {scaleY: 0.01, transformOrigin: "bottom" }, 0.1 ,0);
+      // gtl.staggerFrom('.graphst1', 0.6, {height: "20px", ease: Power2.easeOut, transformOrigin: "bottom"}, 0.1, 0.56);
+      gtl.from('.single-line', 1.9, {drawSVG: 0}, '+=0');
+      // gtl.staggerFrom('.graphst0', 0.4, {autoAlpha: 0, ease: Power2.easeInOut}, 0.15, 0);
+      gtl.staggerFrom(
+        ".single-text",
+        0.2,
+        { autoAlpha: 0, ease: Power2.easeInOut },
+        0.1,
+        0
+      );
+      gtl.staggerFrom('.single-label', 0.2, { autoAlpha: 0, yPercent: '10%', ease: Power2.easeInOut}, 0.05, '+=0');
+      // gtl.staggerFrom('.graph3', 0.2, { autoAlpha: 0, ease: Power2.easeInOut}, 0.05, 1.25);
 
       gtl.play();
+
+  }
+
+  startTimeline(section) {
 
   }
 
@@ -140,6 +187,8 @@ export default class Slider {
       if (entry.isIntersecting) {
         obj.isCurrent();
 
+        console.log(entry.target);
+
 
         var graph = entry.target.querySelector('.single-graph');
         if (graph) {
@@ -147,8 +196,12 @@ export default class Slider {
         }
 
         var trio = entry.target.querySelector('.graph-trio');
-        if (graph) {
-          this.doTrio();
+        if (trio) {
+          var tl = this.doTrio();
+        }
+        var timeline = entry.target.querySelector('[data-timeline]');
+        if (timeline) {
+          this.startTimeline(entry);
         }
 
 
@@ -159,26 +212,152 @@ export default class Slider {
   }
 
   doTrio() {
-    var trio = this.el.querySelector('.single-graph')
-    var gtl = new TimelineMax({repeat: 0});
-      let bars = trio.querySelectorAll('.gst1');
-      gtl.from('.graph-graph', 0.5, {opacity: 0}, 0)
-      let barTime = 0.5;
-      bars.forEach(el => {
-        barTime += 0.07;
-        let rect= el.getBoundingClientRect();
-        let ht = rect.bottom - rect.top;
+    var trio = this.el.querySelector('.graph-trio')
 
-        let getToSmall =  (0.2/(Math.sqrt(ht)))*0.5 + '%';
+    if (trio.classList.contains('loaded')) {
+      return false;
+    }
+    trio.classList.add('loaded');
+    trio.classList.remove('hidden');
 
-        gtl.from(el, 0.6, { scaleY: getToSmall, ease: Power2.easeOut, transformOrigin: "bottom"}, barTime );
-      })
-      // gtl.staggerFrom('.gst1', 0.6, {height: "20px", ease: Power2.easeOut, transformOrigin: "bottom"}, 0.1, 0.56);
-      gtl.from('.gst7', 1.9, {drawSVG: 0}, 1.2);
-      // gtl.staggerFrom('.gst4', 0.4, {opacity: 0, ease: Power0.easeInOut}, 0.15, 0.65);
-      gtl.staggerFrom('.gst5', 0.2, { opacity: 0, ease: Power0.easeInOut}, 0.05, 1.25);
+    var intro = trio.querySelector('.intro-line');
+    var bars = trio.querySelectorAll('.trio-box');
+    var trioTl = new TimelineMax({repeat: 0});
+    var textboxes = trio.parentNode.querySelectorAll('.text-step')
 
-      gtl.play();
+    var step1 = {
+      text: trio.querySelector('[data-textbox="1"]'),
+      trend: trio.querySelector('[data-trend="1"]'),
+      textBox: trio.parentNode.querySelector('[data-step="1"]')
+    }
+    var step2 = {
+      text: trio.querySelector('[data-textbox="2"]'),
+      trend: trio.querySelector('[data-trend="2"]'),
+      textBox: trio.parentNode.querySelector('[data-step="2"]')
+    }
+    var step3 = {
+      text: trio.querySelector('[data-textbox="3"]'),
+      trend: trio.querySelector('[data-trend="3"]'),
+      textBox: trio.parentNode.querySelector('[data-step="3"]')
+    }
+
+
+     textboxes.forEach(textbox => {
+       console.log(textbox);
+       textbox.addEventListener("click", () => {
+         var step = textbox.getAttribute("data-step");
+         trioTl.pause();
+         trioTl.tweenFromTo("step" + step, "step" + (step + 1));
+         trioTl.pause();
+       });
+     });
+
+      trioTl
+        .from(intro, 0.5, { scaleX: 0, transformOrigin: "center" })
+        .staggerFrom(
+          bars,
+          0.25,
+          { scaleY: 0, transformOrigin: "bottom", ease: Power2.easeInOut },
+          0.05
+        )
+        //Animate bar in
+        .to(
+          step1.textBox,
+          0.5,
+          { color: "#1C3773", ease: Power0.easeInOut },
+          "step1"
+        )
+        .from(
+          step1.text,
+          0.5,
+          { autoAlpha: 0, yPercent: 10, ease: Power2.easeInOut },
+          "step1"
+        )
+        .from(step1.trend, 1, { drawSVG: 0, ease: Power0.easeInOut }, "step1")
+        // .addPause()
+        //Animate bar 1 out!
+        .to(
+          step1.textBox,
+          0.25,
+          { color: "#999999", ease: Power0.easeInOut, delay: 2.7 },
+          "step1out"
+        )
+        .to(
+          step1.text,
+          0.25,
+          {
+            autoAlpha: 0,
+            yPercent: 10,
+            ease: Power2.easeInOut,
+            delay: 2.7
+          },
+          "step1out"
+        )
+        .to(
+          step1.trend,
+          0.4,
+          { autoAlpha: 0, ease: Power2.easeInOut, delay: 2.7 },
+          "step1out"
+        )
+
+        .from(
+          step2.text,
+          0.5,
+          { autoAlpha: 0, yPercent: 10, ease: Power2.easeInOut },
+          "step2"
+        )
+        .from(step2.trend, 1, { drawSVG: 0, ease: Power2.easeInOut }, "step2")
+        .to(
+          step2.textBox,
+          0.5,
+          { color: "#1C3773", ease: Power0.easeInOut },
+          "step2"
+        )
+        // .addPause()
+        //Animate bar 1 out!
+        .to(
+          step2.textBox,
+          0.25,
+          { color: "#999999", ease: Power0.easeInOut, delay: 2.7 },
+          "step2out"
+        )
+        .to(
+          step2.text,
+          0.25,
+          {
+            autoAlpha: 0,
+            yPercent: 10,
+            ease: Power2.easeInOut,
+            delay: 2.7
+          },
+          "step2out"
+        )
+        .to(
+          step2.trend,
+          0.4,
+          { autoAlpha: 0, ease: Power0.easeInOut, delay: 2.7 },
+          "step2out"
+        )
+        //Bar 3 in
+        .from(
+          step3.text,
+          0.5,
+          { autoAlpha: 0, yPercent: 10, ease: Power2.easeInOut },
+          "step3"
+        )
+        .from(step3.trend, 1, { drawSVG: 0, ease: Power2.easeInOut }, "step3")
+        .to(
+          step3.textBox,
+          0.5,
+          { color: "#1C3773", ease: Power0.easeInOut },
+          "step3"
+        )
+        .addPause();
+
+
+      return trioTl;
+
+
   }
 
   // handleSwipe(evt) {
