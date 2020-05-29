@@ -155,6 +155,10 @@ export default class Header {
           event.preventDefault();
           targEl.scrollIntoView({ behavior: "smooth" });
           document.body.classList.remove('mobileNavOpen');
+
+
+            self.closeIcon.setAttribute("aria-hidden", true);
+            self.openIcon.setAttribute("aria-hidden", false);
           menuButton.setAttribute('aria-expanded', 'false');
         }
 
