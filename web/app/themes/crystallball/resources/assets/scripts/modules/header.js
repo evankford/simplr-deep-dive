@@ -143,7 +143,7 @@ export default class Header {
   }
 
   scrollToSection() {
-    this.links = this.el.querySelectorAll('[href]');
+    this.links = this.mobileMenu.querySelectorAll('[href]');
     if (this.links)
  {
 
