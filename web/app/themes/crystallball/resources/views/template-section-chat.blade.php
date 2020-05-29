@@ -24,7 +24,7 @@
       </div>
       <div class="block w-full max-w-md mx-auto overflow-hidden transition transition-transform duration-300 ease-in-out delay-75 chat-outer">
 
-        <div class="block transition transition-transform duration-300 ease-in-out delay-75 chat-inner">
+        <div class="block transition transition-transform duration-300 ease-in-out delay-75 translate-y-full opacity-0 chat-inner">
 
           @svg($chat_svg['url'], 'w-full')
         </div>

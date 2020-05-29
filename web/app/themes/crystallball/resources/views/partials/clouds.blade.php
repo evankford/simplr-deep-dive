@@ -1,5 +1,5 @@
 
-<svg  class="block z-20 relative w-full transform--front" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg  class="relative z-10 block w-full transform--front" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1366 768" style="enable-background:new 0 0 1366 768; mix-blend-mode: multiply" xml:space="preserve">
 <style type="text/css">
 	.cloudsto{fill:url(#CLOUD_1_); }

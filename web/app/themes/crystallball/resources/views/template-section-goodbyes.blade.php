@@ -14,15 +14,15 @@
     }
   </style>
 
-  <div class="flex flex-wrap items-center w-auto max-w-5xl p-8 py-32 md:items-start md:mt-32 lg:pt-64 md:py-12 md:min-h-90h" data-module="goodbyes">
-    <h2 data-anim-in class="flex-none min-w-full mt-auto header-resp md:min-w-0 md:m-3">Goodbye</h1>
-    <div class="flex-none mb-auto goodbye-list__outer md:m-3">
+  <div class="flex flex-wrap items-start w-auto max-w-5xl p-8 py-32 pt:0 md:items-start md:mt-32 lg:pt-64 md:py-12 md:min-h-90h" data-module="goodbyes">
+    <h2 data-anim-in class="z-20 flex-none block min-w-full pt-64 mt-auto md:pt-0 header-resp md:min-w-0 md:m-3 bg-var-bg">Goodbye</h1>
+    <div class="flex-none mb-auto goodbye-list__outer md:m-3 ">
       <ul class="goodbye-list" data-anim-in>
         @foreach($goodbyes as $goodbye)
           <li class="mb-4 header-resp goodbye-item">{{$goodbye['Text']}}</li>
         @endforeach
       </ul>
-      <div class="absolute top-0 right-0 w-full overflow-visible">@include('partials.clouds')</div>
+      <div class="absolute top-0 right-0 w-full overflow-visible z-75">@include('partials.clouds')</div>
     </div>
 </div>
   <div class="items-center justify-center w-full max-w-6xl pb-32 hello-section lg:pb-48">

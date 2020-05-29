@@ -47,7 +47,7 @@ if ($single_graph_content['Graph Style'] == 'Months') {
 	c82.2-58.4,139.2-81.2,171-50.3"/>
 </svg>
 <div class="flex flex-wrap items-center justify-center my-4 graph-footer">
-  <div class="flex-none m-4 single-label label"><span class="inline-block w-6 h-6 mr-2 align-middle rounded-md bg-darkblue"></span> <span class="inline-block text-base align-middle">Simplr Specialist Available</span></div>
-  <div class="flex-none m-4 single-label label"><span class="inline-block w-6 h-6 mr-2 align-middle rounded-md bg-bluegray"></span> <span class="inline-block text-base align-middle">Customer Question</span></div>
+  <div class="flex-none m-2 lg:m-4 single-label label"><span class="inline-block w-6 h-6 mr-2 align-middle rounded-md bg-darkblue"></span> <span class="inline-block text-base align-middle">Simplr Specialist Available</span></div>
+  <div class="flex-none m-2 lg:m-4 single-label label"><span class="inline-block w-6 h-6 mr-2 align-middle rounded-md bg-bluegray"></span> <span class="inline-block text-base align-middle">Customer Question</span></div>
 </div>
 </div>

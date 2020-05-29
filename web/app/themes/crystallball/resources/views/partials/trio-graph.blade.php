@@ -43,3 +43,7 @@
 <rect x="91.4" y="514.9" class="trio-textbox" width="25.1" height="29.5"/>
 <text transform="matrix(1 0 0 1 91.3696 540.9531)" class="textaroo" data-textbox="3">C</text>
 </svg>
+<div class="flex flex-wrap items-center justify-center my-4 graph-footer">
+  <div class="flex-none m-4 single-label label"><span class="inline-block w-6 h-6 mr-2 align-middle rounded-md bg-darkblue"></span> <span class="inline-block text-base align-middle">Staffing Level</span></div>
+  <div class="flex-none m-4 single-label label"><span class="inline-block w-6 h-6 mr-2 align-middle rounded-md bg-darkergray"></span> <span class="inline-block text-base align-middle">Support Requests</span></div>
+</div>

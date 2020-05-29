@@ -10,6 +10,7 @@ module.exports = {
       gray: "#cfcfcf",
       bluegray: "#B3B6CD",
       darkgray: "#afafaf",
+      darkergray: "#999999",
       black: "#2a2a2a",
       blacker: "#050505",
       darkblue: "#20386f",
@@ -72,7 +73,8 @@ module.exports = {
         "7xl": "85rem"
       },
       translate: {
-        "2px": "2px"
+        "2px": "2px",
+        "full" : "100%"
       },
       borderRadius: {
         xl: "25px",
@@ -97,7 +99,8 @@ module.exports = {
     }
   },
   variants: {
-    margin: ["first", "last", "odd", "even", "responsive"]
+    margin: ["first", "last", "odd", "even", "responsive"],
+    width: ["first", "last", "responsive"]
   },
   plugins: []
 };

@@ -73,7 +73,7 @@ export default class Slider {
 
       var list = section.el.querySelector('.goodbye-list')
       if (list) {
-        section.tl.to(list, 3, {y: '-78.5%'});
+        section.tl.to(list, 3, {y: '-82.5%'}, 0);
         section.pinner.setPin(section.el)
       }
 
@@ -105,66 +105,66 @@ export default class Slider {
           .addTo(this.controller);
       }
 
-      var chat = section.el.querySelector('[data-chat]');
-      if (chat) {
-        var newController = new ScrollMagic.Controller();
-        var chatScene = new ScrollMagic.Scene({
-          duration: "160%",
-          triggerElement: section.el,
-          offset: 0,
-          triggerHook: "onLeave"
-        }).addTo(newController);
 
-        let chatTL = new TimelineMax();
-        let chatOuter = chat.querySelector('.chat-outer');
-        let chatInner = chatOuter.querySelector(".chat-inner");
-        console.log(chatInner)
-        let chatHt = chatInner.getBoundingClientRect().height;
-        console.log(chatHt)
-        let chatTop = chatInner.getBoundingClientRect().top;
-        let chats = chatOuter.querySelectorAll(".chat-bubble");
-        let offsets = [];
-        let offsetsOuter = [];
-          chats.forEach(el => {
-            offsets.push(
-              (
-                (1 - (el.getBoundingClientRect().top - chatTop) / chatHt + 0.02) *
-                100
-              ).toFixed(4) + "%"
-            );
-            offsetsOuter.push(
-              (
-                -(1 - (el.getBoundingClientRect().top - chatTop) / chatHt) * 50
-              ).toFixed(4) + "%"
-            );
-          });
-
-
-          console.log(offsets)
-          console.log(offsetsOuter)
-          chatOuter.style.height = chatHt + "px";
-          chatOuter.style.transform = "translateY(" + offsetsOuter[1] + ")";
-          chatInner.style.transform = "translateY(" + offsets[1] + ")";
-
-          chatTL.to(chatInner, 0, { y: '100%' }, 0);
-          chatTL.to(chatInner, 0, { y: offsets[1] }, 0.01);
-          chatTL.to(chatOuter, 0, { y: offsetsOuter[1] }, 0.01);
-          chatTL.to(chatInner, 0, { y: offsets[2] }, 0.3);
-          chatTL.to(chatOuter, 0, { y: offsetsOuter[2] }, 0.3);
-          chatTL.to(chatInner, 0, { y: offsets[3] }, 0.6);
-          chatTL.to(chatOuter, 0, { y: offsetsOuter[3] }, 0.6);
-          chatTL.to(chatInner, 0, { y: "0%" }, .9);
-          chatTL.to(chatOuter, 0, { y: "0%" }, .9);
-          chatScene.setTween(chatTL);
-          chatScene.setPin(section.el);
-          chatScene.on("enter", function() {
-            chat.classList.add("section-loaded");
-          });
-      }
 
     })
   }
 
+  startChat(el) {
+    var chat = el.querySelector('[data-chat]');
+    let chatTL = new TimelineMax();
+    let chatOuter = chat.querySelector('.chat-outer');
+    if (!chatOuter.classList.contains('loaded')) {
+
+      chatOuter.classList.add('loaded');
+      let chatInner = chatOuter.querySelector(".chat-inner");
+      let chatHt = chatInner.getBoundingClientRect().height;
+      let chatTop = chatInner.getBoundingClientRect().top;
+      let chats = chatOuter.querySelectorAll(".chat-bubble");
+      let offsets = [];
+      let offsetsOuter = [];
+        chats.forEach(el => {
+          offsets.push(
+            (
+              (1 - (el.getBoundingClientRect().top - chatTop) / chatHt + 0.02) *
+              100
+            ).toFixed(4) + "%"
+          );
+          offsetsOuter.push(
+            (
+              -(1 - (el.getBoundingClientRect().top - chatTop) / chatHt) * 50
+            ).toFixed(4) + "%"
+          );
+        });
+
+
+        chatOuter.style.height = chatHt + "px";
+        chatOuter.style.transform = "translateY(" + offsetsOuter[1] + ")";
+        chatInner.style.transform = "translateY(" + offsets[1] + ")";
+
+        chatTL.to(
+          chatInner,
+          0.5,
+          { ease: Power2.easeInOut, y: "100%" },
+          0
+        );
+        chatTL.to(
+          chatInner,
+          0.5,
+          { ease: Power2.easeInOut, autoAlpha: 1, y: offsets[1] },
+          2
+        );
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[1] }, 0.,6);
+        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[2] }, 2.8);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[2] }, 2.8);
+        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[3] }, 4.1);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[3] }, 4.1);
+        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: "0%" }, 6);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: "0%" }, 6);
+
+        chatTL.play();
+    }
+  }
 
 
   startSingleGraph() {
@@ -190,7 +190,7 @@ export default class Slider {
         0.1,
         0
       );
-      gtl.staggerFrom('.single-label', 0.2, { autoAlpha: 0, yPercent: '10%', ease: Power2.easeInOut}, 0.05, '+=0');
+      gtl.staggerFrom('.single-label', 0.2, { autoAlpha: 0, yPercent: '10%', ease: Power2.easeInOut}, 0.05, 0);
       // gtl.staggerFrom('.graph3', 0.2, { autoAlpha: 0, ease: Power2.easeInOut}, 0.05, 1.25);
 
       gtl.play();
@@ -243,6 +243,10 @@ export default class Slider {
           this.startSingleGraph();
         }
 
+        var chat = entry.target.querySelector('[data-chat]');
+        if (chat) {
+          this.startChat(entry.target);
+        }
         var trio = entry.target.querySelector('.graph-trio');
         if (trio) {
           var tl = this.doTrio();
@@ -292,11 +296,10 @@ export default class Slider {
          if (step == '3' || step == 3) {
           trioTl.tweenFromTo("step3", "end");
           //  trioTl.play();
-          trioTl.stop();
          } else {
           //  trioTl.pause();
-           trioTl.tweenFromTo("step" + step, "step" + (step + 1));
-           trioTl.pause();
+          trioTl.tweenFromTo("step" + step, "step" + step + "out");
+
          }
        });
      });
@@ -309,6 +312,7 @@ export default class Slider {
           { scaleY: 0, transformOrigin: "bottom", ease: Power2.easeInOut },
           0.05
         )
+        .addPause()
         //Animate bar in
         .to(
           step1.textBox,
@@ -331,7 +335,6 @@ export default class Slider {
           { color: "#999999", ease: Power0.easeInOut, delay: 2.7 },
           "step1out"
         )
-
 
         .to(
           step1.text,
@@ -365,6 +368,7 @@ export default class Slider {
           "step2"
         )
         .addPause()
+
         //Animate bar 1 out!
         .to(
           step2.textBox,
@@ -404,7 +408,7 @@ export default class Slider {
           { color: "#1C3773", ease: Power0.easeInOut },
           "step3"
         )
-        .addLabel('end')
+        .addLabel("end")
         .addPause();
 
 

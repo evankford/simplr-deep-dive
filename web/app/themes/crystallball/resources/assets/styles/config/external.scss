@@ -13,10 +13,14 @@ html {
 }
 @import "~basiclightbox/dist/basicLightbox.min.css";
 
+
+/* purgecss start ignore */
 sub, sup {
   display: inline-block;
   margin-right: 0.3em;
 }
+
+/* purgecss end ignore */
 
 .section-wrap {
   @apply w-full flex overflow-hidden flex-col items-center content-center relative bg-var-bg text-var-text;
@@ -58,7 +62,7 @@ sub, sup {
   path[class*="cls"], path {
     fill: currentColor;
   }
-  @apply py-2 pr-6 max-w-2xs w-24 h-24;
+  @apply py-2 pr-6 max-w-2xs w-20 h-20;
 
 
   @extend .object-contain-child;
@@ -78,11 +82,22 @@ sub, sup {
 .subheader-resp {
 
   @apply antialiased leading-snug font-medium;
-  letter-spacing: -0.035em;
   font-size: calc(22px + 0.36vw);
+  letter-spacing: -0.035em;
+
 
   @screen xl {
     // font-size: 38px;
+  }
+  ul {
+    @apply pl-4 mt-4;
+  }
+  li {
+    @apply list-disc;
+    font-size: calc(18px + 0.26vw);
+  }
+  p+p {
+    @apply mt-4;
   }
 }
 

@@ -15,24 +15,22 @@
   </style>
   <div class="container w-full p-8 m-auto md:p-12 lg:16">
     <h1 data-anim-in class="text-3xl font-medium leading-tight tracking-tight text-center transform--middle lg:text-5xl">{{$header}}</h1>
-    @include('partials.trio-graph')
-    <ul class="flex flex-wrap text-lg md:flex-no-wrap graph-list">
-      <li data-step="1" class="p-4 text-lg hover-up md:p6 lg:p-8 text-darkgray md:text-xl text-step ">
-        <span class="block uppercase">A.</span>
+    <ul class="flex flex-wrap -mb-12 text-xl leading-snug lg:-mb-20 lg:text-2xl md:flex-no-wrap graph-list text-darkgray">
+      <li data-step="1" class="p-4 md:flex 1/3 hover-up md:p6 lg:p-8 text-step">
+        <span class="block inline-block pr-2 uppercase">A.</span>
         {!!$graph1!!}
       </li>
-      <li data-step="2" class="p-4 text-lg hover-up md:p6 lg:p-8 text-darkgray md:text-xl text-step ">
-        <span class="block uppercase">B.</span>
+      <li data-step="2" class="p-4 md:flex 1/3 hover-up md:p6 lg:p-8 text-step ">
+        <span class="block inline-block pr-2 uppercase">B.</span>
         {!!$graph2!!}
       </li>
-      <li data-step="3" class="p-4 text-lg hover-up md:p6 lg:p-8 text-darkgray md:text-xl text-step ">
-        <span class="block uppercase">C.</span>
+      <li data-step="3" class="p-4 pr-0 md:flex 1/3 hover-up md:p6 lg:p-8 text-step">
+        <span class="block inline-block pr-2 uppercase">C.</span>
         {!!$graph3!!}
       </li>
     </ul>
+    @include('partials.trio-graph')
   </div>
-
-  <hr class="w-full h-1 max-w-3xl m-4 bg-gray lg:m-10">
 
   <div class="container max-w-3xl py-6 mx-auto md:py-12 ">
     <h2 data-anim-in class="max-w-3xl mb-6 header-resp line-accent lg:mb-8">{{$more_title}}</h2>

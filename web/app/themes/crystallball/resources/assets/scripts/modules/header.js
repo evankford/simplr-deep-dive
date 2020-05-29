@@ -143,20 +143,24 @@ export default class Header {
   }
 
   scrollToSection() {
-    this.links = this.el.querySelector('[href]');
-    links.forEach(element => {
-    element.addEventListener('click', function (event) {
-      let hashFinder = /\#(.*)/;
-      let targEl = document.getElementById(hashFinder.exec(event.target.href)[1]);
-      if (targEl) {
-        event.preventDefault();
-        targEl.scrollIntoView({ behavior: "smooth" });
-        document.body.classList.remove('mobileNavOpen');
-        menuButton.setAttribute('aria-expanded', 'false');
-      }
+    this.links = this.el.querySelectorAll('[href]');
+    if (this.links)
+ {
 
+   this.links.forEach(element => {
+      element.addEventListener('click', function (event) {
+        let hashFinder = /\#(.*)/;
+        let targEl = document.getElementById(hashFinder.exec(event.target.href)[1]);
+        if (targEl) {
+          event.preventDefault();
+          targEl.scrollIntoView({ behavior: "smooth" });
+          document.body.classList.remove('mobileNavOpen');
+          menuButton.setAttribute('aria-expanded', 'false');
+        }
+
+      })
     })
-  })
-  }
+    }
+ }
 }
 
