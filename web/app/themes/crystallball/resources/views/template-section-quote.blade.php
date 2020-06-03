@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" data-index="{{$index}}"  class="section-wrap py-0 bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" data-index="{{$index}}"  class="section-wrap @if ($full_height) md:min-h-screen @endif  py-0 bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};
@@ -13,15 +13,15 @@
       --color-background-end: {{$color_bg_end}}
     }
   </style>
-  <div class="container m-auto py-32 flex flex-wrap p-6 md:p-8 items-start justify-center max-w-5xl">
-    <div data-anim-in class="flex-140 m-auto max-w-3xs ">
-      <div class=" rounded-full border-8 border-white overflow-hidden">
+  <div class="container flex flex-wrap items-start justify-center max-w-5xl p-6 py-24 m-auto md:p-8">
+    <div data-anim-in class="max-w-sm m-auto flex-200 ">
+      <div class="overflow-hidden border-8 border-white rounded-full ">
         @include('partials.image-element', ['image'=> $testimonial_image, 'args' => ["max_width" => 300]])
       </div>
     </div>
-    <div class="flex-400 p-4 lg:pl-12">
-      <h3 data-anim-in  class="font-bold text-2xl md:text-3xl lg:text-4xl my-6 leading-tight tracking-tight">{{$testimonial_quote}}</h3>
-      <p><span data-anim-in class="text-lg lg:text-xl font-bold inline-block mr-1">- {{$testimonial_name}}</span> <span data-anim-in class="lg:text-lg font-light">{{$testimonial_title}}</span></p>
+    <div class="p-4 flex-400 lg:pl-12">
+      <h3 data-anim-in  class="my-6 text-2xl font-bold leading-tight tracking-tight md:text-3xl lg:text-4xl">{{$testimonial_quote}}</h3>
+      <p><span data-anim-in class="inline-block mr-1 text-lg font-bold lg:text-xl">- {{$testimonial_name}}</span> <span data-anim-in class="font-light lg:text-lg">{{$testimonial_title}}</span></p>
     </div>
   </div>
 </section>

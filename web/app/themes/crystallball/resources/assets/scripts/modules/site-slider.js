@@ -14,7 +14,6 @@ import {
 } from "gsap/all";
 import { DrawSVGPlugin } from "../components/DrawSVGPlugin";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
-import "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
  ScrollMagicPluginGsap(ScrollMagic, gsap);
 gsap.registerPlugin(DrawSVGPlugin, CSSPlugin);
 
@@ -73,7 +72,7 @@ export default class Slider {
 
       var list = section.el.querySelector('.goodbye-list')
       if (list) {
-        section.tl.to(list, 3, {y: '-82.5%'}, 0);
+        section.tl.fromTo(list, 3, {y: '-0.5%'}, {y: '-81.5%'}, 0);
         section.pinner.setPin(section.el)
       }
 
@@ -144,23 +143,23 @@ export default class Slider {
 
         chatTL.to(
           chatInner,
-          0.5,
+          0,
           { ease: Power2.easeInOut, y: "100%" },
           0
         );
         chatTL.to(
           chatInner,
-          0.5,
+          0.4,
           { ease: Power2.easeInOut, autoAlpha: 1, y: offsets[1] },
-          2
+          0.4
         );
-        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[1] }, 0.,6);
-        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[2] }, 2.8);
-        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[2] }, 2.8);
-        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[3] }, 4.1);
-        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[3] }, 4.1);
-        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: "0%" }, 6);
-        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: "0%" }, 6);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[1] }, 0.1);
+        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[2] }, 2.3);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[2] }, 2.3);
+        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[3] }, 4.8);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[3] }, 4.8);
+        chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: "0%" }, 7);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: "0%" }, 7);
 
         chatTL.play();
     }

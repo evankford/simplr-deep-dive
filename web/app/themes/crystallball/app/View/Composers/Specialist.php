@@ -27,7 +27,8 @@ class Specialist extends Composer
           'icons' => Acf::field('Icons')->get(),
           'specialist_image' => Acf::field('Specialist Image')->get(),
           'name' => Acf::field('Name')->get(),
-          'info' => Acf::field('Info')->get()
+          'info' => Acf::field('Info')->get(),
+          'below' => Acf::field('Below Specialist')->get()
         ];
     }
 

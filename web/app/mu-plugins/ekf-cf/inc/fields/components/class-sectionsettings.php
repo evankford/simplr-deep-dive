@@ -27,7 +27,8 @@ class SectionSettings {
         ->addField('titlecol4', 'column', ['column-type' =>'1_2'])
           ->addColorPicker("Main Text Color", ['required' => 1])
           ->addColorPicker("Accent Text Color", ["default_value", "#0098c7"])
-        ->addField('titlecolreset2', 'column', ['column-type' =>'1_1']);
+        ->addField('titlecolreset2', 'column', ['column-type' =>'1_1'])
+        ->addTrueFalse('Full Height', ['default_value' => 1, 'instructions' => "You almost always want this to be true!"]);
       return $builder;
   }
 }

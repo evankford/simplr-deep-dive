@@ -16,10 +16,12 @@ class Specialist {
       ->addRepeater('Icons')
         ->addImage("Icon")
       ->endRepeater()
+
     ->addTab("Specialist")
       ->addImage('Specialist Image', ['required' => 1])
       ->addText('Name', ['required' => 1])
       ->addWysiwyg('Info', ['required' => 1])
+      ->addText("Below Specialist")
     ->addTab("Settings")
       ->addFields(SectionSettings::createFields())
     ->setLocation('page_template', '==', 'template-section-specialist.blade.php');

@@ -37,6 +37,7 @@ class Section extends Composer
           'section_header' => Acf::field('Section Header')->default(false)->get(),
           'section_content' => Acf::field('Section Content')->default(false)->get(),
           'section_decoration' => Acf::field('Include Line Decoration')->default(false)->get(),
+          'full_height' => Acf::field('Full Height')->default(true)->get(),
         ];
     }
 

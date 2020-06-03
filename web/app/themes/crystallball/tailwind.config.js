@@ -60,7 +60,8 @@ module.exports = {
         wide: "56%",
         widescreen: "56vh",
         "90h": "90vh",
-        "50h": "50vh"
+        "50h": "50vh",
+        "screen" : "100vh"
       },
       boxShadow: {
         fun: "12px 12px 0px rgba(0,0,0,0.5)",
@@ -100,7 +101,7 @@ module.exports = {
   },
   variants: {
     margin: ["first", "last", "odd", "even", "responsive"],
-    width: ["first", "last", "responsive"]
+    width: ["first", "last", "responsive"],
   },
   plugins: []
 };

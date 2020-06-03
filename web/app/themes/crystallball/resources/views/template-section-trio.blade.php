@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" data-index="{{$index}}"  class="section-wrap p-8 py-12 md:py-16 lg:pt-24 bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" data-index="{{$index}}"  class="section-wrap @if ($full_height) md:min-h-screen @endif  p-8 py-12 md:py-16 lg:pt-24 bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};
@@ -13,19 +13,19 @@
       --color-background-end: {{$color_bg_end}}
     }
   </style>
-  <div class="container w-full p-8 m-auto md:p-12 lg:16">
-    <h1 data-anim-in class="text-3xl font-medium leading-tight tracking-tight text-center transform--middle lg:text-5xl">{{$header}}</h1>
-    <ul class="flex flex-wrap -mb-12 text-xl leading-snug lg:-mb-20 lg:text-2xl md:flex-no-wrap graph-list text-darkgray">
-      <li data-step="1" class="p-4 md:flex 1/3 hover-up md:p6 lg:p-8 text-step">
-        <span class="block inline-block pr-2 uppercase">A.</span>
+  <div class="container w-full p-4 m-auto md:p-12 lg:16">
+    <h1 data-anim-in class="text-3xl font-medium leading-tight tracking-tight text-center transform--middle lg:text-5xl header-resp">{{$header}}</h1>
+    <ul class="flex flex-wrap -mb-12 text-xl leading-snug lg:-mb-32 lg:text-2xl md:flex-no-wrap graph-list text-darkgray">
+      <li data-step="1" class="flex items-start p-4 font-bold leading-snug md:flex-1/3 hover-up lg:p-6 text-step">
+        <span class="block inline-block inline pr-4 uppercase">A.</span>
         {!!$graph1!!}
       </li>
-      <li data-step="2" class="p-4 md:flex 1/3 hover-up md:p6 lg:p-8 text-step ">
-        <span class="block inline-block pr-2 uppercase">B.</span>
+      <li data-step="2" class="flex items-start p-4 font-bold leading-snug md:flex-1/3 hover-up lg:p-6 text-step">
+        <span class="block inline-block inline pr-4 uppercase">B.</span>
         {!!$graph2!!}
       </li>
-      <li data-step="3" class="p-4 pr-0 md:flex 1/3 hover-up md:p6 lg:p-8 text-step">
-        <span class="block inline-block pr-2 uppercase">C.</span>
+      <li data-step="3" class="flex items-start p-4 pr-0 font-bold leading-snug md:flex-1/3 hover-up lg:p-6 text-step">
+        <span class="block inline-block inline pr-4 uppercase">C.</span>
         {!!$graph3!!}
       </li>
     </ul>

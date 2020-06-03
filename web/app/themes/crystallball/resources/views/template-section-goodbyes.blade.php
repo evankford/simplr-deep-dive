@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" data-index="{{$index}}"  class="section-wrap bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-title="{{$title}}"   data-anim-steps="graph" data-position="ahead" data-index="{{$index}}"  class="section-wrap @if ($full_height) md:min-h-screen @endif  bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};
@@ -14,7 +14,7 @@
     }
   </style>
 
-  <div class="flex flex-wrap items-start w-auto max-w-5xl p-8 py-32 pt:0 md:items-start md:mt-32 lg:pt-64 md:py-12 md:min-h-90h" data-module="goodbyes">
+  <div class="flex flex-wrap items-start w-auto max-w-5xl p-8 py-24 pt:0 md:items-start md:mt-32 lg:pt-64 md:py-12 md:min-h-90h" data-module="goodbyes">
     <h2 data-anim-in class="z-20 flex-none block min-w-full pt-64 mt-auto md:pt-0 header-resp md:min-w-0 md:m-3 bg-var-bg">Goodbye</h1>
     <div class="flex-none mb-auto goodbye-list__outer md:m-3 ">
       <ul class="goodbye-list" data-anim-in>

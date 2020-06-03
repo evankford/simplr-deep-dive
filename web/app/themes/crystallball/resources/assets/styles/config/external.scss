@@ -24,11 +24,8 @@ sub, sup {
 
 .section-wrap {
   @apply w-full flex overflow-hidden flex-col items-center content-center relative bg-var-bg text-var-text;
-
-  @screen md {
-    @apply min-h-screen
-  }
 }
+
 .max-w-90 {
   max-width: 90%;
 }
@@ -139,7 +136,7 @@ sub, sup {
     width: 0.1em;
     background: var(--color-accent);
     position: absolute;
-    top: 0.4em;
+    top: 0.1em;
     content:'';
     display: block;
   }
