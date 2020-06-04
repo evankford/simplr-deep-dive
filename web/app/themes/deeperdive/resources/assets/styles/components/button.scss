@@ -1,0 +1,26 @@
+/**
+ * Button
+ */
+
+ .button {
+   @apply relative overflow-hidden tracking-wider leading-none border-solid border border-blue uppercase inline-block px-5  py-2 leading-tight rounded-full my-3;
+  transition:  color 300ms $ease;
+  span, i {
+position: relative;
+z-index: 2;
+  }
+   &:hover{
+     color: $color__white;
+    &::after {
+      transform: translateX(0);
+    }
+   }
+
+   &::after {
+     @extend %psuedo;
+     background: $color__blue;
+     transition: transform 300ms ease;
+     transform: translateX(-101%);
+   }
+
+ }

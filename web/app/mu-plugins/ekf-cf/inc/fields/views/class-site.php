@@ -15,7 +15,11 @@ class Site {
     $builder = new FieldsBuilder('site_options', ['label' => 'Site Options', 'display' => 'seamless', 'position' => 'acf_after_title']);
 
     $builder
-      ->addTab('Defaults')
+      ->addTab('Mobile Warning')
+        ->addMessage("NOTE", "This warning shows up when people's screens are too small!")
+        ->addImage("mobile_logo" , ["Mobile Warning Logo"])
+        ->addText("mobile_title", ["Mobile Warning Title", "default_value" => "Thanks for visiting!"])
+        ->addText("mobile_text", ["Mobile Warning Text", "default_value" => "This is a highly-customized tour of Simplr's platform, and is only viewable on larger screens. We're so glad you're interested, so please stop by when you're on a larger screen!"])
       ->addTab("Authwall Images")
         ->addImage('Mobile')
         ->addImage('Mobile Blurry')

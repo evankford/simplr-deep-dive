@@ -2,7 +2,7 @@
 namespace EKF_CF\Inc\Fields\Views;
 use StoutLogic\AcfBuilder\FieldsBuilder as FieldsBuilder;
 use EKF_CF\Inc\Fields\Components\SectionSettings;
-
+use EKF_CF\Inc\Fields\Components\SectionHeader;
 
 class Icons {
   function __construct() {
@@ -11,17 +11,14 @@ class Icons {
   public static function create() {
 	$builder = new FieldsBuilder('Icons Options', [ 'position'=> 'acf_after_title', 'hide_on_screen' => ['the_content']]);
   $builder
-    ->addTab("Left")
-      ->addImage("Left Logo")
-      ->addText("Left Text")
-      ->addGallery("Left Gallery")
-    ->addTab("Right")
-      ->addImage("Right Logo")
-      ->addText("Right Text")
-      ->addGallery("Right Gallery")
+    ->addTab("General")
+      ->addFields(SectionHeader::create())
+    ->addTab("Logos")
+      ->addGallery("All Logos")
+      ->addTrueFalse("Animate")
     ->addTab("Settings")
       ->addFields(SectionSettings::createFields())
-    ->setLocation('page_template', '==', 'template-section-icons.blade.php');
+    ->setLocation('page_template', '==', 'template-highlight-icons.blade.php');
     return $builder;
   }
 }

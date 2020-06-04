@@ -54,25 +54,25 @@ class Fields {
 	}
 
 	public  function init() {
-		$this->create_pitches();
-		$this->create_ball();
-		$this->create_clouds();
-		$this->create_site();
-		$this->create_trio();
-		$this->create_goodbye();
-		$this->create_graph();
-		$this->create_quality();
-		$this->create_specialist();
-		$this->create_chat();
-		$this->create_simple();
-		$this->create_standard();
-		$this->create_icons();
-		$this->create_footer();
-		$this->create_quote();
-		$this->create_timeline();
+		// $this->create_pitches();
+		// $this->create_ball();
+		// $this->create_clouds();
+		// $this->create_trio();
+		// $this->create_goodbye();
+		// $this->create_graph();
+		// $this->create_quality();
+		// $this->create_specialist();
+		// $this->create_chat();
+		// $this->create_simple();
+		// $this->create_standard();
+		// $this->create_footer();
+		// $this->create_quote();
+		// $this->create_timeline();
 		// $this->create_default();
-		// $this->createMainPage();
 		// $this->create_impact();
+		$this->create_site();
+		$this->create_icons();
+		$this->create_dive();
 		$this->enqueue_acf_scripts();
 		$this->imageFocus();
 
@@ -109,8 +109,8 @@ class Fields {
 			});
 	}
 
-	public function createMainPage() {
-		$main_page = Views\Home::create();
+	public function create_dive() {
+		$main_page = Views\Dive::create();
 			add_action('acf/init', function() use ($main_page) {
 				acf_add_local_field_group($main_page->build());
 			});
@@ -124,7 +124,7 @@ class Fields {
 
 		add_action('acf/init', function() use ($options) {
 			acf_add_local_field_group($options->build());
-		});
+	});
 	}
 	public function create_pitches() {
 		$options = Views\Pitch::create();
