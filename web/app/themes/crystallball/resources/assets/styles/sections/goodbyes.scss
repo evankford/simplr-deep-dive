@@ -3,6 +3,6 @@
   overflow: hidden;
   &::after{
     @extend %psuedo;
-    background: linear-gradient(to bottom, #1c3773 0%, rgba(#1c3773, 0.25) 35%, transparent 50%, rgba(#1c3773, 0.25) 65%, #1c3773 100%)
+    background: linear-gradient(to bottom, #1c3773 0%, rgba(#1c3773, 0.25) 35%,  rgba(#1c3773, 0) 50%, rgba(#1c3773, 0.25) 65%, #1c3773 100%)
   }
 }

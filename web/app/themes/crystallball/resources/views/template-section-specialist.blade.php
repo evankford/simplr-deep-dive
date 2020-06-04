@@ -16,7 +16,7 @@
   @include('partials.icon-header')
   <div class="container flex-wrap items-center block p-8 py-20 m-auto sm:p-12 md:p-12 lg:pt-16 lg:flex lg:flex-no-wrap lg:flex-row-reverse">
     <div class="flex flex-col p-4 mx-auto flex-300 md:p-8">
-      <div class="flex flex-wrap items-center justify-center" data-anim-in-chilren>
+      <div class="flex flex-wrap items-center justify-center" data-anim-in>
         <div class="relative block w-full overflow-hidden border-8 border-white rounded-full max-w-2xs md:max-w-sm flex-300">
           <div class="pb-full"></div>
           @include('partials.image-element', ['image'=> $specialist_image, 'args' => ['is_bg' => true, 'max_width' => 750]])

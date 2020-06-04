@@ -38,7 +38,7 @@ export default class Slider {
     this.checkActive = this.checkActiveSections.bind(this);
     this.controller =  new ScrollMagic.Controller({});
 
-    this.init()
+    this.init();
   }
   init() {
     this.setupSections();
@@ -72,7 +72,7 @@ export default class Slider {
 
       var list = section.el.querySelector('.goodbye-list')
       if (list) {
-        section.tl.fromTo(list, 3, {y: '-0.5%'}, {y: '-81.5%'}, 0);
+        section.tl.fromTo(list, 3, {y: '-0.5%'}, {y: '-82.5%'}, 0);
         section.pinner.setPin(section.el)
       }
 
@@ -138,8 +138,10 @@ export default class Slider {
 
 
         chatOuter.style.height = chatHt + "px";
-        chatOuter.style.transform = "translateY(" + offsetsOuter[1] + ")";
-        chatInner.style.transform = "translateY(" + offsets[1] + ")";
+        chatOuter.style.transform = "translateY(" + offsetsOuter[0] + ")";
+        chatInner.style.transform = "translateY(" + offsets[0] + ")";
+        chatInner.classList.remove('hidden');
+        chatInner.classList.add('block');
 
         chatTL.to(
           chatInner,
@@ -149,9 +151,9 @@ export default class Slider {
         );
         chatTL.to(
           chatInner,
-          0.4,
+          0.5,
           { ease: Power2.easeInOut, autoAlpha: 1, y: offsets[1] },
-          0.4
+          0.1
         );
         chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[1] }, 0.1);
         chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[2] }, 2.3);

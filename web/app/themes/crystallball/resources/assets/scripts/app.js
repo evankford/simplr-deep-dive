@@ -33,8 +33,17 @@ function findAndReplaceText() {
 
 $(document).ready(() => {
   // console.log('Hello world');
-    initModules();
-    findAndReplaceText();
+    // initModules();
+    var authWallEl = document.querySelector("[data-module=authwall]");
+    var Authwall = require('./modules/authwall').default;
+    new Authwall(authWallEl)
+
+
 
 });
 
+$(window).on("authwallCleared", function() {
+  console.log("Auth Cleared");
+  initModules();
+  findAndReplaceText();
+});

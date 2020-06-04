@@ -257,11 +257,13 @@ var self = this;
         document.body.style.height = "auto";
         document.body.style.overflow = "auto";
         document.body.style.overflowX = "hidden";
+
         this.footer.style.marginTop = 0 + "px";
+
       }, 1000);
+      window.dispatchEvent(authEvent);
     }, 2000);
 
     window.removeEventListener("resize", this.authBodySize);
-    window.dispatchEvent(authEvent);
   }
 }

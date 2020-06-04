@@ -17,7 +17,7 @@ export default class Header {
     this.el.classList.add('js')
     // this.resize();
     this.initMenu();
-    this.scrollToSection();
+
 
     // window.addEventListener('resize', this.resize)
     // window.addEventListener('load', this.resize)
@@ -79,6 +79,7 @@ export default class Header {
         }
       })
     }
+    this.scrollToSection();
   }
 
   showBg()  {

@@ -1,6 +1,3 @@
-
-
-
 export default class Goodbyes {
   constructor(el) {
     // ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
