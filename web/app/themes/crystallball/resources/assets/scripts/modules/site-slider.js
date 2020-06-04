@@ -140,12 +140,10 @@ export default class Slider {
         chatOuter.style.height = chatHt + "px";
         chatOuter.style.transform = "translateY(" + offsetsOuter[0] + ")";
         chatInner.style.transform = "translateY(" + offsets[0] + ")";
-        chatInner.classList.remove('hidden');
-        chatInner.classList.add('block');
 
         chatTL.to(
           chatInner,
-          0,
+          0.1,
           { ease: Power2.easeInOut, y: "100%" },
           0
         );
@@ -153,9 +151,9 @@ export default class Slider {
           chatInner,
           0.5,
           { ease: Power2.easeInOut, autoAlpha: 1, y: offsets[1] },
-          0.1
+          0.2
         );
-        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[1] }, 0.1);
+        chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[1] }, 0.2);
         chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[2] }, 2.3);
         chatTL.to(chatOuter, 0.5, { ease:Power2.easeInOut, y: offsetsOuter[2] }, 2.3);
         chatTL.to(chatInner, 0.5, { ease:Power2.easeInOut, y: offsets[3] }, 4.8);
