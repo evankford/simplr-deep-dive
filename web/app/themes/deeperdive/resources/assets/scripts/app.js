@@ -69,11 +69,12 @@ class App {
       this.introButton = this.intro.querySelector('[data-button-scene]');
       if (this.introButton) {
         this.introButton.addEventListener('click', () => {
-          this.intro.setAttribute('data-status', 'post');
+          this.intro.setAttribute('data-status', 'hiding');
           setTimeout(() => {
             this.chat.setAttribute('data-status', 'current');
             setTimeout(() => {
               this.intro.classList.add('hidden')
+              this.intro.setAttribute('data-status', 'post');
               this.intro.remove();
               this.doChat();
             }, 500);

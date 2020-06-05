@@ -5,9 +5,9 @@
   .intro-bg {
     transition: opacity 600ms 600ms $ease;
 }
-  &[data-status=post] {
-    z-index: -1;
-    .intro-content,
+
+&[data-status=hiding] {
+  .intro-content,
     .intro-bg {
       opacity: 0;
     }
@@ -24,5 +24,9 @@
         }
       }
     }
+  }
+  &[data-status=post] {
+    z-index: -1;
+    display: none;
   }
 }

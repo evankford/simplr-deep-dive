@@ -71,6 +71,7 @@
   border: 2px solid #efefef;
   padding: 8px 20px;
   display: inline-block;
+  transition: transform 300ms 20ms $ease, opacity 500ms 20ms $ease;
   flex: 1 1 auto;
   margin: 4px;
   background: #fafafa;
@@ -78,5 +79,16 @@
 
   &:hover {
     transform: scale(1.1)
+  }
+}
+
+.links-box:hover {
+  .sample-button {
+    transform: scale(0.95);
+    opacity: 0.7;
+    &:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
   }
 }

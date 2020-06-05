@@ -73,6 +73,7 @@ class Fields {
 		$this->create_site();
 		$this->create_icons();
 		$this->create_dive();
+		$this->create_highlight();
 		$this->enqueue_acf_scripts();
 		$this->imageFocus();
 
@@ -115,9 +116,6 @@ class Fields {
 				acf_add_local_field_group($main_page->build());
 			});
 	}
-	public function aboutPages() {
-
-	}
 
 	public function create_site() {
 		$options = Views\Site::create();
@@ -126,95 +124,54 @@ class Fields {
 			acf_add_local_field_group($options->build());
 	});
 	}
-	public function create_pitches() {
-		$options = Views\Pitch::create();
+	public function create_highlight() {
+		$options = Views\Highlight::create();
+
 		add_action('acf/init', function() use ($options) {
 			acf_add_local_field_group($options->build());
-		});
+	});
 	}
-	public function create_clouds() {
-			$options = Views\Clouds::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_trio() {
-			$options = Views\Trio::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_goodbye() {
-			$options = Views\Goodbye::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_graph() {
-			$options = Views\Graph::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_ball() {
-		$options = Views\Ball::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_quality() {
-		$options = Views\Quality::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_specialist() {
-		$options = Views\Specialist::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_chat() {
-		$options = Views\Chat::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_simple() {
-		$options = Views\Simple::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_standard() {
-		$options = Views\Standard::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
+	// public function create_chat() {
+	// 	$options = Views\Chat::create();
+	// 	add_action('acf/init', function() use ($options) {
+	// 		acf_add_local_field_group($options->build());
+	// 	});
+	// }
+	// public function create_simple() {
+	// 	$options = Views\Simple::create();
+	// 	add_action('acf/init', function() use ($options) {
+	// 		acf_add_local_field_group($options->build());
+	// 	});
+	// }
+	// public function create_standard() {
+	// 	$options = Views\Standard::create();
+	// 	add_action('acf/init', function() use ($options) {
+	// 		acf_add_local_field_group($options->build());
+	// 	});
+	// }
 	public function create_icons() {
 		$options = Views\Icons::create();
 		add_action('acf/init', function() use ($options) {
 			acf_add_local_field_group($options->build());
 		});
 	}
-	public function create_quote() {
-		$options = Views\Quote::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_timeline() {
-		$options = Views\Timeline::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
-	public function create_footer() {
-		$options = Views\Footer::create();
-		add_action('acf/init', function() use ($options) {
-			acf_add_local_field_group($options->build());
-		});
-	}
+	// public function create_quote() {
+	// 	$options = Views\Quote::create();
+	// 	add_action('acf/init', function() use ($options) {
+	// 		acf_add_local_field_group($options->build());
+	// 	});
+	// }
+	// public function create_timeline() {
+	// 	$options = Views\Timeline::create();
+	// 	add_action('acf/init', function() use ($options) {
+	// 		acf_add_local_field_group($options->build());
+	// 	});
+	// }
+	// public function create_footer() {
+	// 	$options = Views\Footer::create();
+	// 	add_action('acf/init', function() use ($options) {
+	// 		acf_add_local_field_group($options->build());
+	// 	});
+	// }
 }
 

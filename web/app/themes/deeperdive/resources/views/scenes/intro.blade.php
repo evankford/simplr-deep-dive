@@ -8,7 +8,7 @@
       <h2 data-anim-in class="my-8 text-black header-resp">{{$intro_text}}</h2>
 
 
-    <x-button href="#" attrs="data-anim-in" scene="intro" button="next" classes="text-blue" icon="right-1">{{$intro_button_text}}</x-button>
+    <button data-anim-in data-button-scene="intro" data-button="next" class="button"><span>{{$intro_button_text}}</span> <i class="ml-1 icon-right-1"></i></button>
 
   </div>
 </div>
