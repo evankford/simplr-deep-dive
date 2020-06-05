@@ -8,7 +8,7 @@
 
   //Background markup/fade in
 ?>
-<aside data-module="authwall" class="fixed z-0 w-full h-screen pointer-events-none">
+<aside data-module="authwall" class="fixed w-full h-screen pointer-events-none z-101">
   <div class="fixed top-0 left-0 z-20 w-full h-screen authwall-images">
     <div class="block mobile-image authwall-image psuedoish md:hidden">
       <div class="normal">

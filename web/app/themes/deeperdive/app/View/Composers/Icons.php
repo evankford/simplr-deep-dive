@@ -24,13 +24,7 @@ class Icons extends Composer
     {
 
         return [
-          'left_logo' => Acf::field('Left Logo')->get(),
-          'left_text' => Acf::field('Left Text')->get(),
-          'left_gallery' => Acf::field('Left Gallery')->get(),
-          'left_decoration' => Acf::field('Decoration Color')->get(),
-          'right_logo' => Acf::field('Right Logo')->get(),
-          'right_text' => Acf::field('Right Text')->get(),
-          'right_gallery' => Acf::field('Right Gallery')->get()
+          'logos' => Acf::field('All Logos')->get(),
         ];
     }
 

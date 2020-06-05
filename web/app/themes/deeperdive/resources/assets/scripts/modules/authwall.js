@@ -8,7 +8,7 @@ export default class AuthWall {
     this.el = el;
     this.toaster = el.querySelector('.auth-toaster');
     this.site = document.getElementById('MainContent');
-    this.footer = document.querySelector('.site-footer')
+    // this.footer = document.querySelector('.site-footer')
     this.form = el.querySelector("[data-hubspot-form]");
     this.emailInput = document.getElementById("authEmail");
     this.nameInput = document.getElementById('authName');
@@ -55,7 +55,7 @@ export default class AuthWall {
   authBodySize() {
     document.body.style.minHeight = window.innerHeight + 'px';
     document.body.style.overflow = 'hidden';
-    this.footer.style.marginTop = window.innerHeight + "px";
+    // this.footer.style.marginTop = window.innerHeight + "px";
   }
 
   getPreAuth() {
@@ -257,8 +257,8 @@ var self = this;
         document.body.style.height = "auto";
         document.body.style.overflow = "auto";
         document.body.style.overflowX = "hidden";
-
-        this.footer.style.marginTop = 0 + "px";
+        this.el.remove();
+        // this.footer.style.marginTop = 0 + "px";
 
       }, 1000);
       window.dispatchEvent(authEvent);

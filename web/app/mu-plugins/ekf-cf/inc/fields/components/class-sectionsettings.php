@@ -10,14 +10,6 @@ class SectionSettings {
   public static function createFields($bg = false) {
      $builder = new FieldsBuilder('Section Settings');
       $builder
-        ->addField('titlecol1', 'column', ['column-type' =>'1_3'])
-          ->addText("Handle" , ['label' => "Handle (this is used to select in menu)", 'required' => 1])
-        ->addField('titlecol2', 'column', ['column-type' =>'1_3'])
-          ->addText("Title" , ['label' => "Title (this is used to select in menu)", 'required' => 1])
-        ->addField('titlecol9', 'column', ['column-type' =>'1_3'])
-          ->addTrueFalse("Main" , ['label' => "Main header in menu?"])
-        ->addField('titlecolreset', 'column', ['column-type' =>'1_1'])
-
         ->addField('titlecol3', 'column', ['column-type' =>'1_2'])
           ->addSelect("Background Style")
             ->addChoices("Solid", "Gradient")
