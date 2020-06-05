@@ -204,6 +204,7 @@
 
   }
 
+   &[data-author=Customer],
    &[data-author=customer] {
     flex-direction: row-reverse;
     padding-left: 70px;

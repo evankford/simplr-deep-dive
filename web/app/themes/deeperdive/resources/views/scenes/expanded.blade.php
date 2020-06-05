@@ -1,38 +1,45 @@
 <div class="fixed z-30 flex flex-col items-center justify-center w-full h-full min-h-screen p-8 text-black expanded" data-scene="expanded" data-status="pre">
-  <h1 data-anim-in class="absolute top-0 w-full h-auto p-6 pt-12 text-center header-resp text-blue">We work hard to keep things simple</h1>
+  <h1 data-anim-in class="absolute top-0 w-full h-auto p-6 pt-12 text-center header-resp text-blue all-links links-active">We work hard to keep things simple</h1>
 
-  <div class="invisible customer-links links-wrap">
-    <h2 class="mt-2 mb-4 text-2xl font-semibold leading-snug text-center text-white ">Simple for your customers</h2>
-    <div class="links-box">
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
+  <div class="invisible customer-links">
+    <div class="links-wrap">
+
+      <h2 class="mt-2 mb-4 text-2xl font-semibold leading-tight text-center text-white ">{{$customer_title}}</h2>
+      <div class="links-box">
+        @foreach ($customer_links as $link)
+          @php
+          $img = get_field('Icon', $link);
+          @endphp
+          <button class="text-lg sample-button" data-id="{{$link}}"><i class="flex items-center justify-center w-8 h-6 m-1 text-lightblue">@svg($img)</i><span>@title($link)</span></button>
+        @endforeach
+      </div>
     </div>
   </div>
-  <div class="invisible simplr-links links-wrap">
-    <h2 class="mt-2 mb-4 text-2xl font-semibold leading-snug text-center text-white ">
-        Simple for your data
-    </h2>
-    <div class="links-box">
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></span></button>
-    </div>
+  <div class="invisible simplr-links">
+      <div class="links-box">
+        @foreach ($simplr_links as $link)
+          @php
+          $img = get_field('Icon', $link);
+          @endphp
+          <button class="text-lg sample-button" data-id="{{$link}}"><i class="flex items-center justify-center w-8 h-6 m-1 text-lightblue">@svg($img)</i><span>@title($link)</span></button>
+        @endforeach
+      </div>
   </div>
-  <div class="invisible specialist-links links-wrap">
-    <h2 class="mt-2 mb-4 text-2xl font-semibold leading-snug text-center text-white ">
-      Simple for your specialists
-    </h2>
-    <div class="links-box">
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
-      <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
+  <div class="invisible specialist-links">
+    <div class="links-wrap">
+
+      <h2 class="mt-2 mb-4 text-2xl font-semibold leading-tight text-center text-white ">{{$specialist_title}}</h2>
+      <div class="links-box">
+        @foreach ($specialist_links as $link)
+          @php
+
+
+          $img = get_field('Icon', $link);
+
+          @endphp
+          <button class="text-lg sample-button" data-id="{{$link}}"><i class="flex items-center justify-center w-8 h-6 m-1 text-lightblue">@svg($img)</i><span>@title($link)</span></button>
+        @endforeach
+      </div>
     </div>
   </div>
 
@@ -49,7 +56,19 @@
     <div class="absolute hidden rounded-full w-line h-line blob bg-offwhite"></div>
   </div>
 
-  <div class="chat-timeline">
+  <div class="hidden chat-timeline z-75" data-timeline>
+    @foreach ($timeline as $item)
+    @php $highlights = '';@endphp
 
+    @foreach($item['Settings']['Highlighted Links'] as $link)
+      @php array_push($highlights, $link) @endphp
+    @endforeach
+
+      @if ($item['acf_fc_layout'] == 'Message' )
+      <div class="message expanded" data-status="inactive" data-author="{{$item['Settings']['Author']}}"  data-links="{{$highlights}}"><div class="speech-bubble" >{{$item['Message']}}</div></div>
+      @elseif ($item['acf_fc_layout'] == 'Simplr')
+      <div class="simplr-message" data-status="inactive" data-author="Simplr" data-links="{{$highlights}}">{{$item['Message']}}</div>
+      @endif
+    @endforeach
   </div>
 </div>

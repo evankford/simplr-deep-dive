@@ -10,6 +10,8 @@ import Animator from "./components/gsapUtilities";
 import objectFitImages from 'object-fit-images';
 import findAndReplaceDOMText from "@thehonestscoop/findandreplacedomtext";
 
+import queryString from 'query-string'
+
 import {
   TimelineMax,
   TweenMax,
@@ -117,6 +119,15 @@ class App {
 
   runExpanded() {
     new Animator(this.expanded)
+
+    var simplrWrap = this.expanded.querySelector(".simplr-links");
+    var simplrButtons = simplrWrap.querySelectorAll(".sample-button");
+    var customerWrap = this.expanded.querySelector(".customer-links");
+    var customerButtons = customerWrap.querySelectorAll(".sample-button");
+    var specialistWrap = this.expanded.querySelector(".specialist-links");
+    var specialistButtons = specialistWrap.querySelectorAll(".sample-button");
+
+
     var startAnim = new TimelineMax({onComplete: ()=> {
       $('.blob').show();
       setTimeout(() => {
@@ -136,6 +147,17 @@ class App {
           },
           0.45
         );
+
+
+        specialistButtons.forEach(button => {
+          button.removeAttribute('style');
+        });
+        customerButtons.forEach(button => {
+          button.removeAttribute('style');
+        });
+        simplrButtons.forEach(button => {
+          button.removeAttribute('style');
+        });
       }, 200);
     }});
 
@@ -145,14 +167,19 @@ class App {
 
 
     startAnim.to(this.whip, 0.1, {opacity: 1}, 0)
-    startAnim.from('.whip-path', 3, {drawSVG: 0, ease: Power2.easeInOut}, 0.5)
-    startAnim.from('.customer-links', 1, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 1)
-    startAnim.from('.simplr-links', 1, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 1.6)
-    startAnim.from('.specialist-links', 1, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 2.2)
+    startAnim.from('.whip-path', 4.5, {drawSVG: 0, ease: Power2.easeInOut}, 0.5)
+
+    startAnim.from(customerWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 1)
+    startAnim.staggerFrom(customerButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 0.2, 1)
+    startAnim.from(simplrWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 2)
+    startAnim.staggerFrom(simplrButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, -0.2, 2)
+    startAnim.from(specialistWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 3.2)
+    startAnim.staggerFrom(specialistButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 0.2, 3.2)
 
 
 
   }
+
 
   runChat() {
     let chatTl = new TimelineMax();
@@ -232,4 +259,8 @@ class App {
 var app = new App();
 $(window).on("authwallCleared", function() {
   app.init();
+
+  if (queryString.parse(window.location.search).skipIntro == 'true') {
+    app.testExpanded();
+  }
 });
