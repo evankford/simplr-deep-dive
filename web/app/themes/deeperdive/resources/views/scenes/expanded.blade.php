@@ -1,4 +1,4 @@
-<div class="fixed z-30 flex flex-col items-center justify-center w-full h-full min-h-screen p-8 text-black expanded all-links links-active" data-scene="expanded" data-status="pre">
+<div class="fixed z-30 flex flex-col items-center justify-center w-full h-full min-h-screen p-8 text-black expanded all-links" data-scene="expanded" data-status="pre">
   <h1 data-anim-in class="absolute top-0 w-full h-auto p-6 pt-12 text-center header-resp text-blue">We work hard to keep things simple</h1>
 
   <div class="invisible customer-links">
@@ -66,7 +66,6 @@
           $highlights .= ',';
         }
         $highlights .= $link;
-
       }
     @endphp
 
