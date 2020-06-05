@@ -1,7 +1,7 @@
 <div class="fixed z-30 flex flex-col items-center justify-center w-full h-full min-h-screen p-8 text-black expanded" data-scene="expanded" data-status="pre">
   <h1 data-anim-in class="absolute top-0 w-full h-auto p-6 pt-12 text-center header-resp text-blue">We work hard to keep things simple</h1>
 
-  <div class="customer-links links-wrap">
+  <div class="opacity-0 customer-links links-wrap">
     <h2 class="mt-2 mb-4 text-2xl font-semibold leading-snug text-center text-white ">Simple for your customers</h2>
     <div class="links-box">
       <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
@@ -12,7 +12,7 @@
       <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></button>
     </div>
   </div>
-  <div class="simplr-links links-wrap">
+  <div class="opacity-0 simplr-links links-wrap">
     <h2 class="mt-2 mb-4 text-2xl font-semibold leading-snug text-center text-white ">
         Simple for your data
     </h2>
@@ -22,7 +22,7 @@
       <button class="text-lg sample-button"><i class="icon-play text-lightblue"></i> <span>Integrations<span></span></button>
     </div>
   </div>
-  <div class="specialist-links links-wrap">
+  <div class="opacity-0 specialist-links links-wrap">
     <h2 class="mt-2 mb-4 text-2xl font-semibold leading-snug text-center text-white ">
       Simple for your specialists
     </h2>
