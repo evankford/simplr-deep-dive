@@ -248,7 +248,10 @@ class App {
 
     this.timelineWrap.classList.remove('invisible');
     var $timelineItems = $(this.timelineWrap).children();
-    $('.all-links').addClass('.links-active')
+
+    this.timeline.add(()=> {
+      $('.all-links').addClass('.links-active')
+    })
 
     $timelineItems.each((i, el) => {
       var stepName = 'step' + i;

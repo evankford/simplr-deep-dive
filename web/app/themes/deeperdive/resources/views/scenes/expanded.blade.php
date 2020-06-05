@@ -62,12 +62,12 @@
       $highlights = '';
       $counter = 0;
       foreach($item['Settings']['Highlighted Links'] as $link) {
+        if (counter > 0)  {
+          $highlights .= ',';
+        }
+        $highlights .= $link;
 
       }
-      if (counter > 0)  {
-        $highlights .= ',';
-      }
-      $highlights .= $link;
     @endphp
 
       @if ($item['acf_fc_layout'] == 'Message' )
