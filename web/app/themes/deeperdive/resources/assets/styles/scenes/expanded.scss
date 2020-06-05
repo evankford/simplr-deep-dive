@@ -44,7 +44,10 @@
   z-index: 100;
   right: 5%;
   max-width: 320px;
-
+  @include media-query($widescreen) {
+    right: auto;
+    left: 70%;
+  }
 }
 .specialist-links {
   position: absolute;
@@ -52,6 +55,11 @@
   left: 5%;
   z-index: 100;
   max-width: 320px;
+
+  @include media-query($widescreen) {
+    left: auto;
+    right: 70%;
+  }
 
 }
 .simplr-links {
@@ -71,7 +79,7 @@
     flex-wrap: nowrap;
   }
 
-  .sample-button:nth-child(2) {
+  .sample-button:nth-child(even) {
     margin: 4em -5em -4em;
     @include media-query($widescreen) {
       margin: 4em -3em -4em;
@@ -143,7 +151,7 @@
     opacity: 0.7;
   }
   .links-wrap.has-links {
-    opacity: 0.9;
+    opacity: 1;
   }
   .sample-button {
     transform: scale(0.925);
@@ -155,8 +163,8 @@
 
     }
 
-    &.active-link {
-      transform: scale(1.05);
+    &.active {
+      transform: scale(1.04);
       opacity: 1;
 
       &:hover {
@@ -177,12 +185,20 @@
   position: fixed;
   z-index: 100;
   bottom: 50px;
-  width: calc(100% - 600px);
+  width: calc(100% - 520px);
   left: 50%;
   max-width: 900px;
   transform: translateX(-50%);
   height: 50vh;
 
+}
+.simplr-message {
+  display: block;
+  margin: auto;
+  max-width: 450px;
+  width: 60%;
+  padding: 12px;
+  text-align: center;
 }
 
 
@@ -195,13 +211,23 @@
     align-items: center;
     justify-content: center;
     margin: 0;
+    height: 120px;
 
+    &[data-status=active] {
+      .speech-bubble {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    &[data-author=Customer] {
+      .speech-bubble {
+        margin: 0 0 0 auto;
+      }
+    }
     .speech-bubble {
       margin-right: auto;
       flex: 0 0 auto;
       max-width: 80%;
-      &[data-author=Customer] {
-        margin: 0 0 0 auto;
-      }
     }
   }

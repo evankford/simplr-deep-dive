@@ -141,8 +141,8 @@ class App {
             repeat: 1000,
             motionPath: {
               path: ".whip-path",
-              alignOrigin: [0.5, 0.5],
-              align: ".whip-path"
+              align: ".whip-path",
+              alignOrigin: [0.5, 0.5]
             }
           },
           0.45
@@ -158,6 +158,8 @@ class App {
         simplrButtons.forEach(button => {
           button.removeAttribute('style');
         });
+
+        this.runTimeline();
       }, 200);
     }});
 
@@ -239,6 +241,42 @@ class App {
     this.expanded = document.querySelector('[data-scene="expanded"]')
   }
 
+  runTimeline() {
+    this.timeline = new TimelineMax()
+    this.timeline.pause();
+    this.timelineWrap = document.querySelector('.chat-timeline')
+
+    this.timelineWrap.classList.remove('invisible');
+    var $timelineItems = $(this.timelineWrap).children();
+    $('.all-links').addClass('.links-active')
+
+    $timelineItems.each((i, el) => {
+      var stepName = 'step' + i;
+      $('.sample-button.active').removeClass('active');
+
+      var linksArray = $(el).attr('data-links').split(',')
+      $(this.timelineWrap).find('[data-status="active"]').attr('data-status', 'inactive')
+      this.timeline.add(
+        ()=> {
+          linksArray.forEach(link=> {
+            var searcher = '.sample-button[data-id=' + link + ']'
+
+            $(searcher).addClass('active');
+            $(searcher).parents('.links-wrap').addClass("has-links");
+          })
+          console.log(el);
+          $(el).attr('data-status', 'active')
+        }, stepName
+
+      )
+      this.timeline.to(el, 0.8 , {autoAlpha: 1}, stepName )
+      this.timeline.addPause();
+
+    })
+    this.timeline.play();
+    console.log(this.timeline);
+
+  }
 
 
 

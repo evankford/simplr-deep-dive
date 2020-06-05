@@ -1,5 +1,5 @@
-<div class="fixed z-30 flex flex-col items-center justify-center w-full h-full min-h-screen p-8 text-black expanded" data-scene="expanded" data-status="pre">
-  <h1 data-anim-in class="absolute top-0 w-full h-auto p-6 pt-12 text-center header-resp text-blue all-links links-active">We work hard to keep things simple</h1>
+<div class="fixed z-30 flex flex-col items-center justify-center w-full h-full min-h-screen p-8 text-black expanded all-links links-active" data-scene="expanded" data-status="pre">
+  <h1 data-anim-in class="absolute top-0 w-full h-auto p-6 pt-12 text-center header-resp text-blue">We work hard to keep things simple</h1>
 
   <div class="invisible customer-links">
     <div class="links-wrap">
@@ -56,18 +56,24 @@
     <div class="absolute hidden rounded-full w-line h-line blob bg-offwhite"></div>
   </div>
 
-  <div class="hidden chat-timeline z-75" data-timeline>
+  <div class="invisible chat-timeline z-75" data-timeline>
     @foreach ($timeline as $item)
-    @php $highlights = '';@endphp
+    @php
+      $highlights = '';
+      $counter = 0;
+      foreach($item['Settings']['Highlighted Links'] as $link) {
 
-    @foreach($item['Settings']['Highlighted Links'] as $link)
-      @php array_push($highlights, $link) @endphp
-    @endforeach
+      }
+      if (counter > 0)  {
+        $highlights .= ',';
+      }
+      $highlights .= $link;
+    @endphp
 
       @if ($item['acf_fc_layout'] == 'Message' )
-      <div class="message expanded" data-status="inactive" data-author="{{$item['Settings']['Author']}}"  data-links="{{$highlights}}"><div class="speech-bubble" >{{$item['Message']}}</div></div>
+      <div class="invisible message expanded" data-status="inactive" data-author="{{$item['Settings']['Author']}}"  data-links="{{$highlights}}"><div class="speech-bubble" >{{$item['Message']}}</div></div>
       @elseif ($item['acf_fc_layout'] == 'Simplr')
-      <div class="simplr-message" data-status="inactive" data-author="Simplr" data-links="{{$highlights}}">{{$item['Message']}}</div>
+      <div class="invisible text-xl simplr-message" data-status="inactive" data-author="Simplr" data-links="{{$highlights}}">{{$item['Message']}}</div>
       @endif
     @endforeach
   </div>
