@@ -2,6 +2,7 @@
   &[data-status=pre] {
     z-index: 0;
     pointer-events: none;
+    display: none;
   }
    .expanded-content {
     transition: opacity 400ms 200ms $ease;
@@ -37,7 +38,7 @@
 
 .customer-links {
   position: absolute;
-  bottom: 320px;
+  bottom: 290px;
   z-index: 100;
   right: 5%;
   width: 450px;
@@ -45,7 +46,7 @@
 }
 .specialist-links {
   position: absolute;
-  bottom: 320px;
+  bottom: 290px;
   left: 5%;
   z-index: 100;
   width: 450px;

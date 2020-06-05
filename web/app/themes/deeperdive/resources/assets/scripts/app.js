@@ -48,6 +48,7 @@ class App {
 
     this.megaTL = new TimelineMax();
     this.doChat = this.runChat.bind(this);
+    this.doExpanded = this.runExpanded.bind(this);
   }
   setupScenes() {
     this.scenes = document.querySelectorAll('[data-scene]');
