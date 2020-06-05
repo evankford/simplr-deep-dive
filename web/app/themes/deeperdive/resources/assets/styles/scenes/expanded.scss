@@ -1,5 +1,8 @@
 .expanded {
-  .expanded-content {
+  &[data-status=pre] {
+    z-index: 0;
+  }
+   .expanded-content {
     transition: opacity 400ms 200ms $ease;
   }
 }
