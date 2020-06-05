@@ -27,6 +27,7 @@ class Chat extends Composer
           'customer' => Acf::field('Customer')->get(),
           'specialist' => Acf::field('Specialist')->get(),
           'messages' => Acf::field('Chat Messages')->get(),
+          'review' => Acf::field('Review Text')->default(false)->get(),
         ];
     }
 }

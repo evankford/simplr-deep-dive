@@ -18,41 +18,49 @@
       </div>
 
     </div>
-    <div class="conversation__content">
-      <div class="chat-outer">
-        <div class="chat-inner">
-      @foreach ($messages as $message)
-      @if ($message['acf_fc_layout'] == 'Message')
-      @php $author = strtolower($message['Settings']['Author']) @endphp
-        <div class="message" data-author="{{$author}}" data-bubbles="{{$msesage['Settings']['Typing Bubbles?']}}" data-delay="{{$msesage['Settings']['Delay']}}">
-          <div class="w-auto m-2 chat-icon">
-              @if ($author == 'specialist')
-              <div class="block mx-auto mb-1 overflow-hidden rounded-full w-14 bg-var-specialist">
-                @include('partials.image-element', ['image' => $specialist['Images']['Icon']])
-              </div>
-              <div class="p-1 px-2 text-sm leading-none text-center text-white rounded-full bg-var-specialist">Specialist</div>
-              @elseif ($author == 'customer')
-              <div class="block mx-auto mb-1 overflow-hidden rounded-full w-14 bg-var-customer">@include('partials.image-element', ['image' => $customer['Images']['Icon']])</div>
-              <div class="p-1 px-2 text-sm leading-none text-center text-white rounded-full bg-var-customer">Customer</div>
-              @endif
-          </div>
+    <div class="p-4 conversation__content">
+        <div class="chat-outer">
+          <div class="chat-inner">
+        @foreach ($messages as $message)
+        @if ($message['acf_fc_layout'] == 'Message')
+        @php
+        $author = strtolower($message['Settings']['Author']);
+        $delay = intval($message['Settings']['Delay']) / 10;
+        @endphp
 
-          <div class="bg-white speech-bubble">
-            <div class="text-black message">{{$message['Message']}}</div>
+          <div data-active="false" class="message" data-author="{{$author}}" data-bubbles="{{$message['Settings']['Typing Bubbles?']}}" data-delay="{{$delay}}">
+            <div class="w-auto m-2 chat-icon">
+                @if ($author == 'specialist')
+                <div data-icon class="block mx-auto mb-1 overflow-hidden rounded-full w-14 bg-var-specialist">
+                  @include('partials.image-element', ['image' => $specialist['Images']['Icon']])
+                </div>
+                <div data-label class="p-1 px-2 text-sm leading-none text-center text-white rounded-full bg-var-specialist">Specialist</div>
+                @elseif ($author == 'customer')
+                <div data-icon class="block mx-auto mb-1 overflow-hidden rounded-full w-14 bg-var-customer">@include('partials.image-element', ['image' => $customer['Images']['Icon']])</div>
+                <div data-label class="p-1 px-2 text-sm leading-none text-center text-white rounded-full bg-var-customer">Customer</div>
+                @endif
+            </div>
+            <div class="m-4 circles">
+              <div class="inline-block w-3 h-3 m-px rounded-full opacity-50 circle bg-gray"></div>
+              <div class="inline-block w-3 h-3 m-px rounded-full opacity-50 circle bg-gray"></div>
+              <div class="inline-block w-3 h-3 m-px rounded-full opacity-50 circle bg-gray"></div>
+            </div>
+            <div class="bg-white speech-bubble" data-message>
+              <p class="text-black">{{$message['Message']}}</p>
+            </div>
           </div>
+          @endif
+          @endforeach
+          @if ($review)
+            <div class="my-4 mt-8 review " data-active="false" data-delay="1">
+              <p class="p-2 font-light text-center">{{$review}}</p>
+              <div class="stars" ></div>
+            </div>
+          @endif
+          <button class="button" data-delay="1" data-active="false" ><span>Dive Deeper</span> <i class="ml-1 icon-right-1 "></i></button>
         </div>
-        @endif
-        @endforeach
-        @if (isset($review['Review Text']))
-          <div class="review">
-            <p class="p-2 m-2 font-light text-center">{{$review["Review Text"]}}</p>
-            <div class="stars" data-active="false">★★★★★</div>
-          </div>
-        @endif
-        <button class="button"><span>Dive Deeper</span> <i class="ml-1 icon-right-1 "></i></button>
       </div>
     </div>
-  </div>
       <div class="p-2 conversation__customer" data-person>
       <div class="max-w-lg m-auto">
         @include('partials.image-element', ['image' => $customer['Images']['Large Image']])

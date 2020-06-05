@@ -1,5 +1,5 @@
 /*!
- * CSSPlugin 3.2.6
+ * CSSPlugin 3.3.0
  * https://greensock.com
  *
  * Copyright 2008-2020, GreenSock. All rights reserved.
@@ -9,7 +9,7 @@
 */
 
 /*!
- * GSAP 3.2.6
+ * GSAP 3.3.0
  * https://greensock.com
  *
  * @license Copyright 2008-2020, GreenSock. All rights reserved.
@@ -27,17 +27,14 @@
  */
 
 /*!
- * ScrollMagic v2.0.7 (2019-05-07)
- * The javascript library for magical scroll interactions.
- * (c) 2019 Jan Paepke (@janpaepke)
- * Project Website: http://scrollmagic.io
- * 
- * @version 2.0.7
- * @license Dual licensed under MIT license and GPL.
- * @author Jan Paepke - e-mail@janpaepke.de
+ * ScrollTrigger 3.3.0
+ * https://greensock.com
  *
- * @file ScrollMagic main library.
- */
+ * @license Copyright 2008-2020, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
 
 /*!
  * headroom.js v0.11.0 - Give your page some headroom. Hide your header until you need it
@@ -46,12 +43,6 @@
  */
 
 /*! npm.im/object-fit-images 3.2.4 */
-
-/**
- * @license countdown.js v2.6.0 http://countdownjs.org
- * Copyright (c)2006-2014 Stephen M. McKamey.
- * Licensed under The MIT License.
- */
 
 /**
  * findAndReplaceDOMText v 0.4.6
