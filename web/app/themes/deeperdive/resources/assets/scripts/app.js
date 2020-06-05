@@ -250,7 +250,7 @@ class App {
     var $timelineItems = $(this.timelineWrap).children();
 
     this.timeline.add(()=> {
-      $('.all-links').addClass('.links-active')
+      $('.all-links').addClass('links-active')
     })
 
     $timelineItems.each((i, el) => {
