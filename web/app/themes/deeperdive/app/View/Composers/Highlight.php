@@ -4,7 +4,7 @@ namespace App\View\Composers;
 use Samrap\Acf\Acf;
 use Roots\Acorn\View\Composer;
 
-class Section extends Composer
+class Highlight extends Composer
 {
     /**
      * List of views served by this composer.
