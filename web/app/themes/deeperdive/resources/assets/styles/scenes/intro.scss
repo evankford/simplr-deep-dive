@@ -6,6 +6,7 @@
     transition: opacity 600ms 600ms $ease;
 }
   &[data-status=post] {
+    z-index: -1;
     .intro-content,
     .intro-bg {
       opacity: 0;

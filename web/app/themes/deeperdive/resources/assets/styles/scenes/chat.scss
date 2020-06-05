@@ -15,7 +15,7 @@
 
   .conversation__specialist, .conversation__customer {
     align-self: end;
-    transition: transform 300ms $ease;
+    transition: transform 800ms $ease;
   }
 
 
@@ -23,6 +23,8 @@
 
 
   .specialist-details {
+    transition: transform 300ms $ease;
+    transform-origin: top left;
     h4,h5 {
       transition: transform 300ms 400ms $ease;
     }
@@ -34,6 +36,7 @@
   .conversation__customer {
     transition-delay: 100ms;
     .specialist-details {
+      transform-origin: top right;
       h4,h5 {
         transition: transform 300ms 700ms $ease;
       }
@@ -63,13 +66,18 @@
     }
 
     .specialist-details {
+      transform: scale(1.5);
       h4,h5 {
-        transform: translateY(-150%)
+        transform: translateY(0%)
       }
     }
-    .conversation__content {
-      .message {
+    .chat-inner {
+      &>* {
         transition: transform 1000ms $ease;
+        transform: translateX(100vw);
+        &:nth-child(even) {
+          transform: translateX(-100vw);
+        }
         &:nth-child(2) {
           transition-delay: 200ms;
         }
@@ -116,6 +124,7 @@
 
 .circles {
   display: none;
+
 
   [data-active="bubbles"] & {
     display: flex;

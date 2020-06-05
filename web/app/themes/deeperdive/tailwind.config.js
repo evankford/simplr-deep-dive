@@ -19,7 +19,8 @@ module.exports = {
       black: "#4a4a4a",
       blacker: "#050505",
       darkblue: "#20386f",
-      lightblue: "#3fafe1"
+      lightblue: "#3fafe1",
+      lighterblue: "#7fcff1"
     },
     backdropFilter: {
       blur: "blur(8px)"
@@ -62,7 +63,11 @@ module.exports = {
       },
       width: {
         "85p": "85%",
-        "14" : "3.2rem"
+        "14" : "3.2rem",
+        "line" : "10px"
+      },
+      height: {
+        "line" : "10px"
       },
       minHeight: {
         "600x": "600px",

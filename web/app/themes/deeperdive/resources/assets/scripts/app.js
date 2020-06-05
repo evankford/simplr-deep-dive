@@ -12,11 +12,14 @@ import findAndReplaceDOMText from "@thehonestscoop/findandreplacedomtext";
 
 import {
   TimelineMax,
+  TweenMax,
   Power2,
   gsap
 } from "gsap/all";
 import { DrawSVGPlugin } from "./components/DrawSVGPlugin";
-gsap.registerPlugin(DrawSVGPlugin);
+import { MotionPathPlugin } from "./components/MotionPathPlugin";
+
+gsap.registerPlugin(DrawSVGPlugin, MotionPathPlugin);
 
 objectFitImages();
 
@@ -83,7 +86,8 @@ class App {
 
   checkChat() {
     if (this.intro) {
-      this.chatButton = this.intro.querySelector('button');
+      this.chatButton = this.chat.querySelector('.button');
+      console.log(this.chatButton)
       if (this.chatButton) {
         this.chatButton.addEventListener('click', () => {
           this.chat.setAttribute('data-status', 'post');
@@ -102,7 +106,49 @@ class App {
     }
   }
 
+  testExpanded() {
+    this.chat.setAttribute("data-status", "post");
+    this.intro.setAttribute("data-status", "post");
+    this.expanded.setAttribute("data-status", "current");
+    this.runExpanded();
+  }
+
   runExpanded() {
+    new Animator(this.expanded)
+    var startAnim = new TimelineMax({onComplete: ()=> {
+      $('.blob').show();
+      setTimeout(() => {
+        TweenMax.staggerTo(
+          ".blob",
+          2,
+          {
+            yoyo: true,
+            duration: 2,
+            repeatDelay: 0.5,
+            repeat: 1000,
+            motionPath: {
+              path: ".whip-path",
+              alignOrigin: [0.5, 0.5],
+              align: ".whip-path"
+            }
+          },
+          0.45
+        );
+      }, 200);
+    }});
+
+    this.whip = this.expanded.querySelector('[data-whip]')
+    this.whip.style.opacity = 0;
+    this.whip.classList.remove('hidden');
+
+
+    startAnim.to(this.whip, 0.1, {opacity: 1}, 0)
+    startAnim.from('.whip-path', 3, {drawSVG: 0, ease: Power2.easeInOut}, 0.5)
+    startAnim.from('.customer-links', 1, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 1)
+    startAnim.from('.simplr-links', 1, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 1.6)
+    startAnim.from('.specialist-links', 1, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 2.2)
+
+
 
   }
 
@@ -114,18 +160,13 @@ class App {
     let chatTop = chatInner.getBoundingClientRect().top;
 
     let $chats = $(chatInner).children();
-    console.log($chats);
-
-    let offsets = [];
-    let delays = []
-    let bubbles = []
-    let types = []
-    let offsetsOuter = [];
-
+    this.chat.addEventListener('click', function() {
+      console.log("speeding up!")
+      chatTl.timeScale(chatTl.timeScale() + 1)
+    })
     chatTl.to(chatOuter, {y: '-60%'}, 0)
     $chats.each((i, el) => {
       var base = ((1-($(el).offset().top - chatTop) / chatHt + 0.02) * 100).toFixed(4);
-      console.log(base)
       var stepName = 'chat' + i;
       var delay = Math.max(0, $(el).attr('data-delay'));
 
@@ -162,14 +203,7 @@ class App {
       )
 
 
-      })
-
-
-      console.log(chatTl);
-
-
-
-
+    })
   }
 
   checkExpanded() {

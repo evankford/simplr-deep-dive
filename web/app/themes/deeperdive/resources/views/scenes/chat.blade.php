@@ -52,7 +52,7 @@
           @endif
           @endforeach
           @if ($review)
-            <div class="my-4 mt-8 review " data-active="false" data-delay="1">
+            <div class="my-4 mt-8 review " data-active="false" data-delay="1.5">
               <p class="p-2 font-light text-center">{{$review}}</p>
               <div class="stars" ></div>
             </div>
@@ -66,13 +66,10 @@
         @include('partials.image-element', ['image' => $customer['Images']['Large Image']])
       </div>
       <hr class="h-1 mb-3 border-none bg-var-customer">
-      <div class="flex items-end justify-start overflow-hidden specialist-details">
+      <div class="flex items-end justify-end overflow-hidden specialist-details">
         <h4 class="mr-2 -mb-px text-2xl font-bold leading-none text-blue">{{$customer['Details']['Name']}}</h4>
         <h5 class="text-lg font-normal leading-none text-var-customer">{{$customer['Details']['Title']}}</h5>
       </div>
-
-
     </div>
-
   </div>
 </div>
