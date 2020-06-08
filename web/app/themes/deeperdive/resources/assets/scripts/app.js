@@ -94,7 +94,6 @@ class App {
   checkChat() {
     if (this.intro) {
       this.chatButton = this.chat.querySelector('.button');
-      console.log(this.chatButton)
       if (this.chatButton) {
         this.chatButton.addEventListener('click', () => {
           this.chat.setAttribute('data-status', 'post');
@@ -526,7 +525,6 @@ class App {
     }
 
     if (label) {
-      console.log(label);
       this.ticketTl
         .tweenTo(label, { duration: 1.8, ease: Power2.easeInOut })
     }
@@ -552,19 +550,15 @@ class App {
   this.nextButton = document.querySelector("[data-timeline-button='next']");
 
   this.playButton.addEventListener('click', () => {
-    console.log(self.timeline)
-    var rem = self.timeline.duration() * self.timeline.progress();
+    var rem = self.timeline.duration() * (1 - self.timeline.progress()) * 2;
     self.timeline.tweenTo('end', {duration: rem})
 
     this.togglePlayButton();
   })
   this.nextButton.addEventListener('click', () => {
-    console.log(self.timeline)
-    console.log(self.timeline);
     self.timeline.reversed(false).play();
   })
   this.prevButton.addEventListener('click', () => {
-    console.log(self.timeline)
     self.timeline.seek(Math.max(0, self.timeline.time() - 4)).play();
   })
 
@@ -576,7 +570,6 @@ class App {
      { autoAlpha: 0.45, y: 0, ease: Power2.easeInOut, delay: 3.5 },
      0.2,
      () => {
-       console.log($("[data-timeline-button]"));
        $("[data-timeline-button]")
          .removeClass("invisible")
          .removeAttr("style");
