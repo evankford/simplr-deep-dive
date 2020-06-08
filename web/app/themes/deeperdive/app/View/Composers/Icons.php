@@ -12,7 +12,7 @@ class Icons extends Composer
      * @var array
      */
     protected static $views = [
-        'template-section-icons',
+        'template-highlight-icons',
     ];
 
     /**

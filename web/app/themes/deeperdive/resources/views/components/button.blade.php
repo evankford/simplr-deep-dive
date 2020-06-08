@@ -1,5 +1,4 @@
 <a
-    data-anim-in
     data-text="{{ $text ?? $slot }}"
     {{$attrs}}
     data-button="{{$button}}"

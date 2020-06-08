@@ -32,9 +32,7 @@ export default class Animator {
     $(this.el)
       .find("[data-anim-in]")
       .each((childI, el) => {
-        var childTl = new TimelineMax({
-          scrollTrigger: { trigger: el, start: "top 80%" }
-        });
+        var childTl = new TimelineMax();
         var delay = Math.min(childI * 0.2, 1);
         childTl
           .from(el, 0.5, {
@@ -48,9 +46,7 @@ export default class Animator {
     $(this.el)
       .find("[data-anim-in-children]")
       .each((childI, el) => {
-        var childTl = new TimelineMax({
-          scrollTrigger: { trigger: el, start: "top 80%" }
-        });
+        var childTl = new TimelineMax();
         var delay = Math.min(childI * 0.2, 1);
         var children = $(el).children();
         childTl

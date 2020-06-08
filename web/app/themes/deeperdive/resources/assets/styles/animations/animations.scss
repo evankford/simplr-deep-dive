@@ -17,14 +17,7 @@ html:not(.no-js) {
     transform: rotate(360deg)
   }
 }
-@keyframes pulse {
-  from {
-     opacity: 1;
-  }
-  to {
-    opacity: 0.6
-  }
-}
+
 @keyframes backforth {
   0% {
     transform: translateX(0%);
@@ -79,3 +72,54 @@ html:not(.no-js) {
 
 }
 
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%,
+  20% {
+    transform: scale3d(0.95, 0.95, 0.95) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.tada {
+  animation-name: tada;
+}
+
+@keyframes pulse2 {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse2;
+  animation-timing-function: ease-in-out;
+}

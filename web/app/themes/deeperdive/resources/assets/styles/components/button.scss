@@ -3,11 +3,14 @@
  */
 
  .button {
-   @apply relative overflow-hidden tracking-wider leading-none border-solid border border-blue uppercase inline-block px-5  py-2 leading-tight rounded-full my-3;
+   @apply relative overflow-hidden tracking-wider leading-none border-solid border border-blue uppercase px-5  py-2 leading-tight rounded-full my-3;
   transition:  color 300ms $ease;
+  display: inline-flex;
+  align-items: center;justify-content: center;
   span, i {
-position: relative;
-z-index: 2;
+    position: relative;
+    vertical-align: middle;
+    z-index: 2;
   }
    &:hover{
      color: $color__white;
@@ -21,6 +24,30 @@ z-index: 2;
      background: $color__blue;
      transition: transform 300ms ease;
      transform: translateX(-101%);
+    }
+
+    &.gray {
+      color: #424242;
+      border-color: #424242;
+      &:hover {
+        color: $color__white;
+      }
+      &::after {
+        @extend %psuedo;
+        background: #424242;
+      }
+
    }
 
+   &.small {
+     font-size: 13px;
+     padding: 0.4rem 0.8rem;
+   }
+
+   i:last-child {
+     margin: 0 0 0 0.1rem;
+    }
+   i:first-child {
+     margin: 0 0.15rem 0 0;
+    }
  }

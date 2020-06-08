@@ -25,7 +25,7 @@ class Highlight extends Composer
 
       $home_id = get_option( 'page_on_front' );
         return [
-          'id' => Acf::field('Handle')->get(),
+          'id' => strtolower(preg_replace('/\s+/', '-', Acf::field('Handle')->get())),
           'title' => Acf::field('Title')->get(),
           'bg_style' => strtolower(Acf::field('Background Style')->get()),
           'color_bg' => Acf::field('Background Color')->get(),

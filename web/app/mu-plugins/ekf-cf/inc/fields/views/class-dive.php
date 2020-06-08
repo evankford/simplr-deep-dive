@@ -73,8 +73,16 @@ class Dive {
 					->addPostObject('Simplr Links', ['post_type' => "highlight", 'return_format' => 'id','multiple' => 1])
 
 		->addTab('Timeline')
+
 			->addFlexibleContent("Deeper Timeline")
 				->addLayout('Message')
+					->addText("Message")
+					->addGroup("Settings", ['layout'=>'table'])
+						->addButtonGroup("Author")
+							->addChoices('Specialist', 'Customer')
+						->addPostObject('Highlighted Links', ['post_type' => "highlight", 'return_format' => 'id', 'multiple' => 1, 'instructions' => "For best results, make sure these are the same highlights selected in the 'Links' tab above. These will show as higlighted at this stage"])
+					->endGroup()
+				->addLayout('Tween')
 					->addText("Message")
 					->addGroup("Settings", ['layout'=>'table'])
 						->addButtonGroup("Author")
@@ -86,7 +94,11 @@ class Dive {
 					->addGroup("Settings", ['layout'=>'table'])
 						->addPostObject('Highlighted Links', ['post_type' => "highlight", 'return_format' => 'id', 'multiple' => 1, 'instructions' => "For best results, make sure these are the same highlights selected in the 'Links' tab above. These will show as higlighted at this stage"])
           ->endGroup()
-        ->endFlexibleContent()
+				->endFlexibleContent()
+			->addTab("Timeline Images")
+					->addImage('Ticket', ['return_format' => 'url'])
+				->addGallery("Specialists Gallery")
+				->addGallery("Customers Gallery")
 		->setLocation("post_type", '==' , 'dive')->or('page_template' , '==', 'template-dive.blade.php');
     return $builder;
   }

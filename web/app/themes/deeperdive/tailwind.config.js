@@ -53,20 +53,24 @@ module.exports = {
         "80": 80,
         "99": 99,
         "100": 100,
-        "101": 101
+        "101": 101,
+        "1000": 1000,
+        "1001": 1001
       },
       fontSize: {
         huge: "calc(3rem + 1.5vw)"
       },
       minWidth: {
-        "600x": "600px"
+        "600x": "600px",
       },
       width: {
+        "100x": "100px",
         "85p": "85%",
         "14" : "3.2rem",
         "line" : "10px"
       },
       height: {
+        "100x": "100px",
         "line" : "10px"
       },
       minHeight: {

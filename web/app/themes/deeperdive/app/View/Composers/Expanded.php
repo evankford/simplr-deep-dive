@@ -29,7 +29,10 @@ class Expanded extends Composer
           'customer_links' => Acf::field('Customer Links')->get(),
           'specialist_links' => Acf::field('Specialist Links')->get(),
           'simplr_links' => Acf::field('Simplr Links')->get(),
-          'timeline' => Acf::field('Deeper Timeline')->get()
+          'timeline' => Acf::field('Deeper Timeline')->get(),
+          'ticket' => Acf::field('Ticket')->get(),
+          'customer_gallery' => Acf::field('Customers Gallery')->get(),
+          'specialist_gallery' => Acf::field('Specialists Gallery')->get()
         ];
     }
 }

@@ -1,0 +1,6 @@
+.section-wrap {
+
+  &:not(.current-page) {
+    display: none;
+  }
+}

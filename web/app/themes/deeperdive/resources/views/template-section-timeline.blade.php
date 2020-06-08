@@ -4,7 +4,7 @@
   Template Post Type: section, shortsection
 --}}
 
-<section id="{{$id}}" data-title="{{$title}}"   data-position="ahead" data-index="{{$index}}"  class="section-wrap @if ($full_height > 0) md:min-h-screen @endif  py-0 bg-style--{{$bg_style}}">
+<section id="{{$id}}" data-page="{{get_the_id()}}"   data-position="ahead" data-index="{{$index}}"  class="section-wrap @if ($full_height > 0) md:min-h-screen @endif  py-0 bg-style--{{$bg_style}}">
   <style>
     section#{{$id}} {
       --color-background: {{$color_bg}};

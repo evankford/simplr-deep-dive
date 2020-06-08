@@ -16,7 +16,8 @@ import {
   TimelineMax,
   TweenMax,
   Power2,
-  gsap
+  Elastic,
+  gsap,
 } from "gsap/all";
 import { DrawSVGPlugin } from "./components/DrawSVGPlugin";
 import { MotionPathPlugin } from "./components/MotionPathPlugin";
@@ -40,6 +41,7 @@ $(document).ready(() => {
 
 });
 
+
 class App {
   constructor() {
   }
@@ -51,6 +53,7 @@ class App {
     this.megaTL = new TimelineMax();
     this.doChat = this.runChat.bind(this);
     this.doExpanded = this.runExpanded.bind(this);
+
   }
   setupScenes() {
     this.scenes = document.querySelectorAll('[data-scene]');
@@ -100,7 +103,7 @@ class App {
             setTimeout(() => {
               this.intro.classList.add('hidden')
               this.intro.remove();
-              this.doExpanded();
+              this.runTimeline();
             }, 500);
           }, 1000);
         })
@@ -114,10 +117,15 @@ class App {
     this.chat.setAttribute("data-status", "post");
     this.intro.setAttribute("data-status", "post");
     this.expanded.setAttribute("data-status", "current");
-    this.runExpanded();
+    this.runTimeline();
   }
 
   runExpanded() {
+
+     if (this.expandedStatus == true) return false;
+
+     this.expandedStatus = true;
+
     new Animator(this.expanded)
 
     var simplrWrap = this.expanded.querySelector(".simplr-links");
@@ -126,18 +134,26 @@ class App {
     var customerButtons = customerWrap.querySelectorAll(".sample-button");
     var specialistWrap = this.expanded.querySelector(".specialist-links");
     var specialistButtons = specialistWrap.querySelectorAll(".sample-button");
+    var specialistIcons = specialistWrap.querySelectorAll(".person-icon");
+    var customerIcons = customerWrap.querySelectorAll(".person-icon");
 
-
-    var startAnim = new TimelineMax({onComplete: ()=> {
-      $('.blob').show();
+    var startAnim = new TimelineMax({id: 'expanded', onComplete: ()=> {
       setTimeout(() => {
+        TweenMax.staggerTo(
+          ".blob",
+          0.4,
+          {
+           autoAlpha:1
+          },
+          0.45
+        );
         TweenMax.staggerTo(
           ".blob",
           2,
           {
             yoyo: true,
             duration: 2,
-            repeatDelay: 0.5,
+            repeatDelay: -0.5,
             repeat: 1000,
             motionPath: {
               path: ".whip-path",
@@ -149,7 +165,12 @@ class App {
         );
 
 
+
+
         specialistButtons.forEach(button => {
+          button.removeAttribute('style');
+        });
+        specialistIcons.forEach(button => {
           button.removeAttribute('style');
         });
         customerButtons.forEach(button => {
@@ -158,8 +179,11 @@ class App {
         simplrButtons.forEach(button => {
           button.removeAttribute('style');
         });
+        customerIcons.forEach(button => {
+          button.removeAttribute('style');
+        });
 
-        this.runTimeline();
+        // this.runTimeline();
       }, 200);
     }});
 
@@ -169,14 +193,16 @@ class App {
 
 
     startAnim.to(this.whip, 0.1, {opacity: 1}, 0)
-    startAnim.from('.whip-path', 4.5, {drawSVG: 0, ease: Power2.easeInOut}, 0.5)
+    startAnim.from('.whip-path', 3.5, {drawSVG: 0, ease: Power2.easeInOut}, 0)
 
     startAnim.from(customerWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 1)
-    startAnim.staggerFrom(customerButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 0.2, 1)
-    startAnim.from(simplrWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 2)
-    startAnim.staggerFrom(simplrButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, -0.2, 2)
-    startAnim.from(specialistWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 3.2)
-    startAnim.staggerFrom(specialistButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 0.2, 3.2)
+    startAnim.staggerFrom(customerButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 0.2, 0.5)
+    startAnim.staggerFrom(customerIcons, 0.4, {autoAlpha: 0, x: '125%', ease: Power2.easeInOut}, 0.12, 0.7)
+    startAnim.from(simplrWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 1.2)
+    startAnim.staggerFrom(simplrButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, -0.2, 1.2)
+    startAnim.from(specialistWrap, 0.8, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 2)
+    startAnim.staggerFrom(specialistButtons, 0.4, {autoAlpha: 0, y: '25%', ease: Power2.easeInOut}, 0.2, 2)
+    startAnim.staggerFrom(specialistIcons, 0.4, {autoAlpha: 0, x: '-125%', ease: Power2.easeInOut}, 0.12, 2.3)
 
 
 
@@ -241,44 +267,321 @@ class App {
     this.expanded = document.querySelector('[data-scene="expanded"]')
   }
 
+  startButtons() {
+    this.expandedBG = document.querySelector('.expanded-bg');
+
+
+    var self = this;
+    $('.sample-button').click((evt)=>{
+
+        if ($(evt.target).hasClass("sample-button")) {
+          var $targ = $(evt.target);
+          var targ = evt.target;
+        } else {
+          var $targ = $(evt.target).parents(".sample-button");
+          var targ = $(targ)[0];
+        }
+
+      var bgColor = $targ.data('color')
+      $(".expanded-bg")
+        .css({
+          left: $targ.offset().left + 0.5 * $targ.width(),
+          top: $targ.offset().top - 0.5 * $targ.height()
+        })
+        .removeClass("hidden");
+
+      var scaleMod = Math.min(window.innerWidth, window.innerHeight/ 30)
+
+      var id = $targ.data('id')
+      $("[data-page=" + id + "]").removeClass('hidden')
+        setTimeout(() => {
+          $("[data-page=" + id + "]")
+            .addClass("current-page")
+            .parents('.expanded-pages')
+            .removeClass("hidden pointer-events-none");
+            new Animator($("[data-page=" + id + "]")[0]);
+        }, 500);
+      gsap.to(this.expandedBG, {scale: scaleMod, backgroundColor: bgColor, ease: Power2.easeInOut, duration: 1});
+        gsap.to("[data-close-popup]", {
+          autoAlpha: 0,
+          scale: 0,
+          delay: 0.5,
+          duration: 0.5,
+          ease: Power2.easeInOut,
+          onComplete: () => {
+             $('[data-close-popup]').removeAttr('style');
+          }
+      })
+    })
+
+    $('[data-close-popup]').click(()=> {
+      var $current = $('.current-page')
+      $current.removeClass("current-page");
+      gsap.to(this.expandedBG, {scale: 0, duration: 0.7})
+      setTimeout(() => {
+        $('.expanded-pages').addClass('hidden pointer-events-none')
+        $current.addClass('hidden')
+      }, 760);
+       gsap.to("[data-close-popup]", {autoAlpha: 0, scale: 0, delay: 0.5, duration: 0.5, ease: Power2.easeInOut})
+    })
+  }
+
   runTimeline() {
-    this.timeline = new TimelineMax()
+    this.startButtons();
+    this.timeline = new TimelineMax({id: 'timeline'})
     this.timeline.pause();
     this.timelineWrap = document.querySelector('.chat-timeline')
+
+
 
     this.timelineWrap.classList.remove('invisible');
     var $timelineItems = $(this.timelineWrap).children();
 
-    this.timeline.add(()=> {
-      $('.all-links').addClass('links-active')
-    })
+
+
+
+
+
 
     $timelineItems.each((i, el) => {
+      //CreateTimeline
       var stepName = 'step' + i;
-      $('.sample-button.active').removeClass('active');
 
+      //Animate main message
+      this.timeline.to(
+        "[data-status=active]",
+        1.2,
+        { autoAlpha: 0, y: "20%", ease: Power2.easeInOut },
+        stepName
+      );
+      this.timeline.fromTo(
+        el,
+        0.8,
+        { autoAlpha: 0, y: "20%" },
+        { delay: 0, y: "0%", autoAlpha: 1, ease: Power2.easeInOut },
+        stepName
+      );
+
+      //Do ticket things
+
+
+
+      //HANDLE LINKS
       var linksArray = $(el).attr('data-links').split(',')
-      $(this.timelineWrap).find('[data-status="active"]').attr('data-status', 'inactive')
-      this.timeline.add(
-        ()=> {
-          linksArray.forEach(link=> {
-            var searcher = '.sample-button[data-id=' + link + ']'
+      if (linksArray.length == 1 && linksArray[0] == '') {
+        linksArray = false;
+      }
+      if (linksArray.length > 0) {
+        this.timeline.add(() => {
+          $(".all-links").addClass("links-active");
+        }, stepName + "+=0.25");
+      }
 
-            $(searcher).addClass('active');
-            $(searcher).parents('.links-wrap').addClass("has-links");
-          })
-          console.log(el);
-          $(el).attr('data-status', 'active')
-        }, stepName
+      this.timeline.add(() => {
+         $(this.timelineWrap)
+          .find('[data-status="active"]')
+          .attr("data-status", "inactive");
+      }, stepName +'+=0.1');
 
-      )
-      this.timeline.to(el, 0.8 , {autoAlpha: 1}, stepName )
-      this.timeline.addPause();
+
+      this.timeline.add(() => {
+        $(el).attr("data-status", "active")
+        if ($(el).children('.speech-bubble').length) {
+           $('.pulse').removeClass('pulse');
+          $(el).children('.speech-bubble').addClass('pulse')
+        } else {
+
+        }
+      }, stepName+ '+=.24');
+
+
+
+
+      this.timeline.add(() => {
+        $(".sample-button.active").removeClass("active");
+
+        if (linksArray) {
+          linksArray.forEach(link => {
+            var searcher = ".sample-button[data-id=" + link + "]";
+            $(searcher).addClass("active");
+            $(searcher)
+              .parents(".links-wrap")
+              .addClass("has-links");
+          });
+        } else {
+             $(".all-links").removeClass("links-active");
+        }
+
+        if (i == 0) {
+          this.watchTimelineButtons();
+          this.runExpanded();
+        } else {
+          this.moveTicket(el)
+        }
+
+      }, stepName+'+=0.5');
+
+      this.timeline.addPause(stepName + "+=2");
 
     })
-    this.timeline.play();
-    console.log(this.timeline);
+    //Anim in buttons at the beginning
 
+    this.timeline.addLabel('end');
+
+    this.timeline.play();
+
+
+  }
+
+  startTicket() {
+    this.ticket = document.getElementById('ticket') ;
+
+    this.ticketTl = new TimelineMax()
+     this.ticketTl
+       .to(this.ticket, {
+         duration: 0.5,
+         motionPath: {
+           autoRotate: true,
+           path: ".whip-path",
+           align: ".whip-path",
+           alignOrigin: [0.5, 0.5],
+           start: 0,
+           end: 0.005
+         }
+       }, 'customer')
+       .addPause("customerPause");
+      this.ticketTl = new TimelineMax()
+      this.ticketTl
+       .to(this.ticket, {
+         duration: 1,
+         motionPath: {
+           autoRotate: true,
+           path: ".whip-path",
+           align: ".whip-path",
+           alignOrigin: [0.5, 0.5],
+           start: 0.006,
+           end: 0.047
+         }
+       })
+       .addPause("customerTween");
+     this.ticketTl
+       .to(this.ticket, {
+         duration: 2.5,
+         motionPath: {
+           autoRotate: true,
+           path: ".whip-path",
+           align: ".whip-path",
+           alignOrigin: [0.5, 0.5],
+           start: 0.048,
+           end: 0.48
+         }
+       })
+       .addPause("simplr");
+     this.ticketTl
+       .to(this.ticket, {
+         duration: 1,
+         motionPath: {
+           autoRotate: true,
+           path: ".whip-path",
+           align: ".whip-path",
+           alignOrigin: [0.5, 0.5],
+           start: 0.481,
+           end: 0.95
+         }
+       })
+       .addPause("specialistTween");
+     this.ticketTl
+       .to(this.ticket, {
+         duration: 0.5,
+         motionPath: {
+           autoRotate: true,
+           path: ".whip-path",
+           align: ".whip-path",
+           alignOrigin: [0.5, 0.5],
+           start: 0.951,
+           end: 0.99
+         }
+       })
+       .addPause("specialist");
+    gsap.fromTo(this.ticket, {autoAlpha: 0, scale: 0}, {autoAlpha:1, scale: 1, ease: Power2.easeInOut})
+  }
+  moveTicket(el) {
+    var currentLayout = $(el).attr('data-layout');
+    var currentAuthor = $(el).attr('data-author');
+    var label = '';
+
+    if (currentLayout == 'Tween') {
+      if (currentAuthor == 'Specialist') {
+        label = 'specialistTween'
+      }
+      else if (currentAuthor == 'Customer') {
+        label = 'customerTween'
+      }
+    } else {
+      label = currentAuthor.toLowerCase();
+    }
+
+    if (!this.ticketTl) {
+      this.startTicket();
+    }
+
+    if (label) {
+      console.log(label);
+      this.ticketTl
+        .tweenTo(label, { duration: 1.8, ease: Power2.easeInOut })
+    }
+  }
+
+  togglePlayButton()  {
+    if (this.playButton) {
+      var icon = this.playButton.getElementsByTagName('i');
+      var text = this.playButton.getElementsByTagName('span');
+    }
+  }
+
+  watchTimelineButtons() {
+
+
+     if (this.timelineButtonStatus == true) return false;
+
+     this.timelineButtonStatus = true;
+
+    var self = this;
+  this.playButton = document.querySelector("[data-timeline-button='play']");
+  this.prevButton = document.querySelector("[data-timeline-button='prev']");
+  this.nextButton = document.querySelector("[data-timeline-button='next']");
+
+  this.playButton.addEventListener('click', () => {
+    console.log(self.timeline)
+    var rem = self.timeline.duration() * self.timeline.progress();
+    self.timeline.tweenTo('end', {duration: rem})
+
+    this.togglePlayButton();
+  })
+  this.nextButton.addEventListener('click', () => {
+    console.log(self.timeline)
+    console.log(self.timeline);
+    self.timeline.reversed(false).play();
+  })
+  this.prevButton.addEventListener('click', () => {
+    console.log(self.timeline)
+    self.timeline.seek(Math.max(0, self.timeline.time() - 4)).play();
+  })
+
+  var buttonTL = new TimelineMax();
+   buttonTL.staggerFromTo(
+     "[data-timeline-button]",
+     0.5,
+     { autoAlpha: 0, y: 20, ease: Power2.easeInOut },
+     { autoAlpha: 0.45, y: 0, ease: Power2.easeInOut, delay: 3.5 },
+     0.2,
+     () => {
+       console.log($("[data-timeline-button]"));
+       $("[data-timeline-button]")
+         .removeClass("invisible")
+         .removeAttr("style");
+     }
+   );
   }
 
 
@@ -304,4 +607,5 @@ $(window).on("authwallCleared", function() {
   if (queryString.parse(window.location.search).skipIntro == 'true') {
     app.testExpanded();
   }
+
 });
