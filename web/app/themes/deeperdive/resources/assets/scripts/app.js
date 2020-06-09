@@ -223,6 +223,22 @@ class App {
     chatTl.to(chatOuter, {y: '-60%'}, 0)
     $chats.each((i, el) => {
       var base = ((1-($(el).offset().top - chatTop) / chatHt + 0.02) * 100).toFixed(4);
+      if (i == 0) {
+        chatTl
+          .to(
+            chatOuter,
+            0.5,
+            { delay: delay, y: -(base*1.15) / 2 + "%", ease: Power2.easeInOut },
+            "start"
+          )
+          .to(
+            chatInner,
+            0.5,
+            { delay: delay, y: (base*1.15) + "%", ease: Power2.easeInOut },
+            "start"
+          );
+      }
+      console.log(base);
       var stepName = 'chat' + i;
       var delay = Math.max(0, $(el).attr('data-delay'));
 
@@ -240,26 +256,28 @@ class App {
       )
       .add(() => {
         if ($(el).attr('data-bubbles') ==  1) {
-            $(el).attr("data-active", "true");
-                chatTl.addPause(stepName, ()=> {
-                  $(el).attr("data-active", "bubbles");
-                  setTimeout(() => {
-                    $(el).attr("data-active", "message");
-                    chatTl.play();
-                  }, 1000);
-                });
-
-
-              } else {
+          $(el).attr("data-active", "true");
+            chatTl.addPause(stepName, ()=> {
+              $(el).attr("data-active", "bubbles");
+              setTimeout(() => {
                 $(el).attr("data-active", "message");
-              }
+                chatTl.play();
+              }, 1000);
+            });
 
-      }
+
+            } else {
+              $(el).attr("data-active", "message");
+            }
+
+          }
 
       )
 
 
     })
+
+    console.log(chatTl)
   }
 
   checkExpanded() {
