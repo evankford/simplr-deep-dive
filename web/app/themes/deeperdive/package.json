@@ -68,7 +68,7 @@
     "object-fit-images": "^3.2.4",
     "query-string": "^6.12.1",
     "swipe-detect": "^1.0.1",
-    "swiper": "^5.3.8",
+    "swiper": "^6.5.1",
     "tailwindcss": "^1.4.0",
     "tailwindcss-filters": "^3.0.0",
     "throttle-debounce": "^2.1.0"
